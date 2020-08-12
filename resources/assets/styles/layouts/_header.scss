@@ -1,7 +1,20 @@
+header.banner {
+  border-bottom: 1px solid black;
+  font-size: 1.375rem; //22px
+  position: relative;
+}
+
 .banner .nav li {
   @extend .nav-item;
 }
 
 .banner .nav a {
   @extend .nav-link;
+}
+
+.page-header {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
