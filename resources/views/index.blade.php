@@ -15,13 +15,20 @@
 {!! get_search_form(false) !!}
 @endif
 
-<div class="col-12">
-  <div class="grid row">
+<div class="col-12 pl-0 pr-0">
+  <div class="grid row mr-0 ml-0">
     <div class="grid-sizer"></div>
     @while (have_posts()) @php the_post() @endphp
     @include('partials.content-'.get_post_type())
     @endwhile
   </div>
+  <div class="footer">
+    @php
+    echo __('MARCELO EXPÓSITO', 'thememexposito');
+    echo date('Y');
+    @endphp
+  </div>
+
 </div>
 
 

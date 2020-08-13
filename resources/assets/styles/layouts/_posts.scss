@@ -1,8 +1,6 @@
 body.blog {
   .content {
     @extend .row;
-
-    background-color: #c9baba;
   }
 
   .main {
@@ -28,7 +26,11 @@ body.blog {
     }
   }
 
-  .grid-sizer,
+  .grid-sizer {
+    @extend .col-12;
+    @extend .col-lg-4;
+  }
+
   article {
     @extend .col-12;
     @extend .col-lg-4;
@@ -91,5 +93,9 @@ body.blog {
 }
 
 .active {
-  background-color: white;
+  background-color: #c9baba;
+}
+
+.no-border-bottom {
+  border-bottom: none !important;
 }

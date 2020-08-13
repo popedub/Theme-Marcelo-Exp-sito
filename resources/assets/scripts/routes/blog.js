@@ -6,7 +6,7 @@ export default {
     // JavaScript to be fired on the home page, after the init JS
 
     // init Isotope
-    $(window).load(function(){
+    $(window).load(function () {
 
       var $grid = $('.grid').isotope({
         itemSelector: 'article',
@@ -16,11 +16,110 @@ export default {
           // use element for option
           columnWidth: '.grid-sizer',
         },
+        // disable scale transform transition when hiding
+        hiddenStyle: {
+          opacity: 0,
+        },
+        visibleStyle: {
+          opacity: 1,
+        },
       });
       // layout Isotope after each image loads
-      $grid.imagesLoaded().progress(function () {
+      $grid.imagesLoaded(function () {
         $grid.isotope('layout');
       });
+
+      var borderItems = function(articles){
+        //remove border bottom from las 3 items
+
+          let items = articles;
+
+        //SI ES MÓDULO DE 3
+
+        if (items.length % 3 == 0) {
+          let ultimos = items.slice(Math.max(items.length - 3, 1))
+          for (let i = 0; i < ultimos.length; i++) {
+
+
+            ultimos[i].className += ' no-border-bottom';
+
+          }
+          //si sólo hay 3
+          if(items.length == 3) {
+            for (let i = 0; i < items.length; i++) {
+
+
+              items[i].className += ' no-border-bottom';
+
+            }
+          }
+          //si es hay 6, 9, 12, etc
+          //para remover el estilo del border
+          if (items.length > 3) {
+
+            let itemBorder = items.slice(0, items.length - 3);
+            for (let i = 0; i < itemBorder.length; i++) {
+              if (itemBorder[i].classList.contains('no-border-bottom')) {
+                itemBorder[i].classList.remove('no-border-bottom');
+              }
+          }
+        }
+        //SI ES MODULO 2
+        } else if (items.length % 3 == 2) {
+
+          let ultimos = items.slice(Math.max(items.length - 2, 1))
+          for (let i = 0; i < ultimos.length; i++) {
+
+
+            ultimos[i].className += ' no-border-bottom';
+
+          }
+          //si sólo hay 2
+          if(items.length == 2) {
+            for (let i = 0; i < items.length; i++) {
+
+
+              items[i].className += ' no-border-bottom';
+
+            }
+          }
+          // si es modulo 2 pero hay más de 3
+          //para remover el estilo del border
+          if (items.length > 3) {
+
+            let itemBorder = items.slice(0, items.length - 2);
+            for (let i = 0; i < itemBorder.length; i++) {
+              if (itemBorder[i].classList.contains('no-border-bottom')) {
+                itemBorder[i].classList.remove('no-border-bottom');
+              }
+            }
+          } // si es modulo 1 o sólo hay uno o módulo 1 y hay más de 3
+        } else if(items.length % 3 == 1 || items.length == 1 || items.length > 3) {
+
+          let ultimos = items.slice(Math.max(items.length - 1, 1))
+          for (let i = 0; i < ultimos.length; i++) {
+
+
+            ultimos[i].className += ' no-border-bottom';
+
+          }
+          if (items.length == 1) {
+
+              items[0].className += ' no-border-bottom';
+          }
+          //para remover el estilo del border
+          if (items.length > 3) {
+            let itemBorder = items.slice(0, items.length - 1);
+            for (let i = 0; i < itemBorder.length; i++) {
+              if (itemBorder[i].classList.contains('no-border-bottom')) {
+                itemBorder[i].classList.remove('no-border-bottom');
+              }
+            }
+          }
+        }
+      }
+
+
 
       // store filter for each group
       var filters = {};
@@ -36,7 +135,7 @@ export default {
         filters[filterGroup] = $this.attr('data-filter');
 
 
-        if($this.is('.active')) {
+        if ($this.is('.active')) {
           filters[filterGroup] = '';
           $this.removeClass('active')
 
@@ -67,10 +166,10 @@ export default {
           var elems = $grid.isotope('getFilteredItemElements')
           //queda mirar los breakpoints
           var count = 1;
-          $.each(elems, function(){
+          $.each(elems, function () {
 
 
-            if(count == 1 || count == 2) {
+            if (count == 1 || count == 2) {
               $(this).css('border-right', '1px solid black')
             }
             if (count === 3) {
@@ -79,10 +178,12 @@ export default {
             }
             count++;
           })
-
+          //llamo a la funcion para remover el border-bottom de los últimos items
+          borderItems(elems)
 
         }
-      );
+      )
+
     })
 
   },
