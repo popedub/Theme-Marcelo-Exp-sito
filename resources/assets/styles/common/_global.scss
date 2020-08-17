@@ -2,6 +2,10 @@ html {
   height: 100%;
 }
 
+body {
+  position: relative;
+}
+
 body.home {
   overflow: hidden;
   height: 100%;
@@ -10,4 +14,8 @@ body.home {
 h1 {
   font-size: 1.375rem; // temporal
   margin-bottom: 0;
+}
+
+img {
+  @extend .img-fluid;
 }

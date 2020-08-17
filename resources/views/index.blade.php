@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="col-12 intro">
+  <div class="titular">
+    <h2 class="invisible">START</h2>
+  </div>
   {!! $texto_contenidos !!}
 </div>
 

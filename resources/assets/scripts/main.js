@@ -2,6 +2,8 @@
 import 'jquery';
 import 'isotope-layout/dist/isotope.pkgd';
 import 'imagesloaded/imagesloaded.pkgd';
+import 'bootstrap/js/src/util';
+import 'bigtext/dist/bigtext';
 
 // Import everything from autoload
 import './autoload/**/*'
@@ -10,7 +12,9 @@ import './autoload/**/*'
 import Router from './util/Router';
 import common from './routes/common';
 import blog from './routes/blog';
-import aboutUs from './routes/about';
+import templateBio from './routes/templatebio';
+import single from './routes/single';
+import home from './routes/home';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
@@ -19,7 +23,9 @@ const routes = new Router({
   // Home page
   blog,
   // About Us page, note the change from about-us to aboutUs.
-  aboutUs,
+  templateBio,
+  single,
+  home,
 });
 
 // Load Events

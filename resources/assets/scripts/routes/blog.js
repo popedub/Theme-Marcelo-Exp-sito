@@ -127,6 +127,7 @@ export default {
       $('.filter-button-group').on('click', 'a', function () {
         // get group key
         var $this = $(this);
+
         var filterValue;
 
         var $buttonGroup = $this.parents('.filter-button-group');
@@ -158,7 +159,22 @@ export default {
         }
         return value;
       }
+      //cambiamos el titular de la página de filtros
+      $('.texto-titular').on('click', 'a', function () {
+        // get text form buttom
 
+        var $titular = $(this).text();
+        var $old_titular = $('.titular h2').text();
+
+        if ($(this).text() != $('.titular h2').text()){
+          $('.titular h2').remove();
+          $('.titular').append('<h2>' + $titular + '</h2>');
+        } else if ($titular === $old_titular ) {
+
+          $('.titular h2').toggleClass('invisible');
+        }
+
+      });
       //cuándo isotope ha renderizado los elementos, check el border-right
       $grid.on('layoutComplete',
         // eslint-disable-next-line no-unused-vars
