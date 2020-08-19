@@ -1,3 +1,4 @@
+var accents = require('remove-accents');
 export default {
   init() {
     // JavaScript to be fired on the home page
@@ -12,6 +13,7 @@ export default {
         itemSelector: 'article',
         percentPosition: true,
         layoutMode: 'fitRows',
+        transitionDuration: '0.2s',
         fitRows: {
           // use element for option
           columnWidth: '.grid-sizer',
@@ -165,13 +167,49 @@ export default {
 
         var $titular = $(this).text();
         var $old_titular = $('.titular h2').text();
+        //var clase = $titular.toLowerCase();
+        //clase = $.trim(clase);
+        var clase = accents.remove($titular)
+        clase = clase.toLowerCase();
+        console.log(clase)
 
         if ($(this).text() != $('.titular h2').text()){
           $('.titular h2').remove();
           $('.titular').append('<h2>' + $titular + '</h2>');
+
+          if ($('.descripcion').hasClass(clase)){
+            $('.descripcion-contenidos').addClass('d-none');
+            $('.descripcion').addClass('d-none');
+            $('.descripcion' + '.' + clase ).toggleClass('d-none');
+          }
+
+
         } else if ($titular === $old_titular ) {
 
           $('.titular h2').toggleClass('invisible');
+          if ($('.descripcion').hasClass(clase)) {
+
+            $('.descripcion' + '.' + clase).toggleClass('d-none');
+            $('.descripcion-contenidos').toggleClass('d-none');
+          }
+
+        }
+
+      });
+      $('.texto-header').on('click', 'a', function () {
+        // get text form buttom
+
+        var $titular = $(this).text();
+        var $old_titular = $('.page-header h1').text();
+
+
+        if ($(this).text() != $('.page-header h1').text()) {
+          $('.page-header h1').remove();
+          $('.page-header').append('<h1>' + $titular + '</h1>');
+
+        } else if ($titular === $old_titular) {
+          $('.page-header h1').remove();
+          $('.page-header').append('<h1>' + 'Contenidos' + '</h1>');
         }
 
       });

@@ -2,8 +2,19 @@
 
 @section('content')
 <div class="row">
-  <div class="col-12 col-lg-9">
-    <div class="foto-home" style="background-image: url({{ $foto_destacada->url }})"></div>
+  <div class="col-12 col-lg-9 pl-lg-0 pr-lg-0">
+    @if (@isset($galeria))
+    <div class="galeria">
+      @foreach ($galeria as $foto)
+      <div class="foto-home" style="background-image: url({{ $foto->url }})"></div>
+      @endforeach
+    </div>
+    @endif
+    <div class="quote">
+      @if (@isset($cita))
+        {!! $cita !!}
+      @endif
+    </div>
   </div>
   <div class="col-12 col-lg-3 pl-lg-0 position-relative">
     @php

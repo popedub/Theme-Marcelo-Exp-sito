@@ -56,7 +56,7 @@
   padding-right: 30px;
 }
 
-.search {
+.search-menu {
   position: absolute;
   bottom: 30px;
   right: 30px;
@@ -160,7 +160,10 @@ body:not(.home) {
   header.banner {
     border-bottom: 1px solid black;
     font-size: 1.375rem; //22px
-    position: relative;
+    background-color: white;
+    width: 100%;
+
+    @extend .fixed-top;
   }
 }
 
@@ -195,9 +198,9 @@ body.home {
 
   .nav {
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 40px;
     font-size: 1.375rem; //22px
-    line-height: 1.2;
+    line-height: 1.5;
   }
 
   .nav a {

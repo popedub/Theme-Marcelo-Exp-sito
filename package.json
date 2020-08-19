@@ -81,6 +81,8 @@
     "imagesloaded": "^4.1.4",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.7"
+    "popper.js": "^1.14.7",
+    "remove-accents": "^0.4.2",
+    "slick-carousel": "^1.8.1"
   }
 }

@@ -41,7 +41,7 @@
       ESP.<br>
       ENG.
     </div>
-    <div class="search">
+    <div class="search-menu">
       BUSCAR
     </div>
   </div>

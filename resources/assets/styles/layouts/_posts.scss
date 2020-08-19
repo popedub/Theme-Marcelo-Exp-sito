@@ -112,8 +112,12 @@ body.blog {
 //SINGLE VIEW
 
 body.single {
+  overflow: hidden;
+
   article {
     @extend .row;
+
+    background-color: white;
 
     header {
       @extend .col-12;
@@ -124,8 +128,13 @@ body.single {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      margin-top: 34px; //altura del header.banner
       padding-top: 15px;
       padding-bottom: 15px;
+
+      @include media-breakpoint-up(lg) {
+        position: fixed;
+      }
 
       h1 {
         font-size: 8vw;
@@ -145,10 +154,10 @@ body.single {
 
       .date {
         position: absolute;
-        left: -24px; //la altura del elemento
+        left: -12px; //la altura del elemento dividida 2
         top: calc(50% - 24px); //menos la altura del elemento
         transform: translate(0, -50%);
-        rotate: 90deg;
+        transform:rotate(-90deg);
       }
     }
 
@@ -156,6 +165,9 @@ body.single {
     .content-sidebar {
       @extend .col-12;
       @extend .col-lg-6;
+
+      padding-top: 30px;
+      background-color: white;
     }
 
     .entry-content {
@@ -165,6 +177,11 @@ body.single {
     .content-sidebar {
       position: relative;
       overflow-x: hidden;
+
+      @include media-breakpoint-up(lg) {
+        position: fixed;
+        right: 0;
+      }
     }
   }
 }
@@ -184,18 +201,19 @@ body.single {
 }
 
 .overlay-sidebar {
-  width: 100%;
-  height: calc(100% - 40px); // la altura de los botones
+  width: 50%;
+  height: calc(100% - 74px); // la altura de los botones + el header.banner
   padding: 15px;
   transform: translateX(100%);
   background-color: $blue;
   color: white;
-  position: absolute;
+  position: fixed;
   right: -100%;
   bottom: 40px; //la altura de los botones
   z-index: 1;
   overflow: scroll;
   transition: 0.4s ease-in-out;
+  border-left: 1px solid black;
 }
 
 .overlay-sidebar.show-sidebar {

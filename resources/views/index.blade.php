@@ -6,7 +6,17 @@
   <div class="titular">
     <h2 class="invisible">START</h2>
   </div>
-  {!! $texto_contenidos !!}
+  <div class="descripcion-contenidos">
+      {!! $texto_contenidos !!}
+  </div>
+
+
+  @foreach ($descripcion as $item)
+    <div class="descripcion {{ $item->slug }} d-none">
+      {{ $item->description }}
+    </div>
+
+  @endforeach
 </div>
 
 
