@@ -67,11 +67,17 @@
     @if (@isset($biografia))
     @forelse ($biografia as $item)
     <section id="secction{{ $loop->index }}" class="mb-5">
-      <h3 class="text-center mb-5">{!! $item->texto_menu !!}</h3>
-      <div class="info">
+      <h3 class="text-center mb-5">
+        {!! $item->texto_menu !!}<br>
+        {!! $item->titular_contenido!!}
+      </h3>
+      <div class="info txt-col-{{ $item->columnas }}">
         {!! $item->contenido_seccion !!}
-      </div>
 
+      </div>
+      <div class="links-destacados">
+        {!! $item->enlaces_destacados !!}
+      </div>
     </section>
 
     @empty

@@ -44,4 +44,23 @@ class Home extends Controller
                 return $categories;
 
     }
+        public function filter_parent()
+        {
+        $arg = array(
+        'taxonomy' => 'category',
+        'include' => array (11, 2),
+        );
+        $categories = collect(get_terms($arg))
+        ->filter(function ($category) {
+        return $category->slug !== 'sin-categoria';
+        })
+        ->map(function ($category) {
+        return (object) [
+        'name' => $category->name,
+        'slug' => $category->slug,
+        ];
+        });
+        return $categories;
+
+        }
 }

@@ -35,14 +35,16 @@
   </div>
   <div class="right">
     <button type="button" id="closeMenu" class="overlay-close font-3">@php echo __('CERRAR',
-    'thememexposito')@endphp</button>
+      'thememexposito')@endphp</button>
 
     <div class="languages">
-      ESP.<br>
-      ENG.
+      @php
+      do_action('wpml_add_language_selector');
+      @endphp
+
     </div>
     <div class="search-menu">
-      BUSCAR
+      {!! get_search_form(false) !!}
     </div>
   </div>
 </div>

@@ -17,7 +17,7 @@
 
   @include media-breakpoint-up(lg) {
     font-size: 4rem; //70px
-    line-height: 0.9;
+    line-height: 1;
     letter-spacing: 3px;
   }
 
@@ -198,9 +198,13 @@ body.home {
 
   .nav {
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 30px;
     font-size: 1.375rem; //22px
     line-height: 1.5;
+
+    @media (min-width: 1500px) {
+      margin-top: 40px;
+    }
   }
 
   .nav a {

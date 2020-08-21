@@ -167,8 +167,8 @@ export default {
 
         var $titular = $(this).text();
         var $old_titular = $('.titular h2').text();
-        //var clase = $titular.toLowerCase();
-        //clase = $.trim(clase);
+
+        //para mostrar las descriptiones de las categorias
         var clase = accents.remove($titular)
         clase = clase.toLowerCase();
         console.log(clase)

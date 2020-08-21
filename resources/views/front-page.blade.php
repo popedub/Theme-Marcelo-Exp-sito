@@ -12,7 +12,7 @@
     @endif
     <div class="quote">
       @if (@isset($cita))
-        {!! $cita !!}
+      {!! $cita !!}
       @endif
     </div>
   </div>
@@ -42,9 +42,12 @@
           @descripcion_evento
         </div>
         @if ($link)
-        <a href="@enlace_evento" target="_blank" class="arrow">
-          @texto_enlace
-        </a>
+        <div class="arrow">
+          <a href="@enlace_evento" target="_blank">
+            @texto_enlace
+          </a>
+        </div>
+
         @endif
 
       </div>

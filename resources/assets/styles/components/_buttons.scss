@@ -1,4 +1,22 @@
 .filter-button-group a {
   cursor: pointer;
   text-align: left;
+
+  &::before {
+    content: "○";
+    margin-right: 5px;
+    font-size: 0.7rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
+}
+
+.filter-button-group a.active {
+  &::before {
+    content: "●";
+    margin-right: 5px;
+    font-size: 0.7rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
 }

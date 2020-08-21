@@ -90,3 +90,18 @@ add_filter('comments_template', function ($comments_template) {
 
     return $comments_template;
 }, 100);
+
+
+
+add_filter( 'get_search_form',function ( $form ) {
+
+    $form = '<form role="search" method="get" class="search-form" action="' . home_url( '/' ) . '">
+        <label>
+            <span class="screen-reader-text">Buscar:</span>
+            <input type="search" class="search-field" placeholder="' . __('Buscar','sage') .'" value="' . get_search_query() . '" name="s">
+
+        </label>
+        <input type="submit" class="search-submit" value="Buscar">
+    </form>';
+return $form;
+} );

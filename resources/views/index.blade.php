@@ -7,14 +7,14 @@
     <h2 class="invisible">START</h2>
   </div>
   <div class="descripcion-contenidos">
-      {!! $texto_contenidos !!}
+    {!! $texto_contenidos !!}
   </div>
 
 
   @foreach ($descripcion as $item)
-    <div class="descripcion {{ $item->slug }} d-none">
-      {{ $item->description }}
-    </div>
+  <div class="descripcion {{ $item->slug }} d-none">
+    <p>{{ $item->description }}</p>
+  </div>
 
   @endforeach
 </div>
@@ -36,10 +36,16 @@
     @endwhile
   </div>
   <div class="footer">
-    @php
-    echo __('MARCELO EXPÓSITO', 'thememexposito');
-    echo date('Y');
-    @endphp
+    <div class="row">
+      <div class="col-12 m">
+        @php
+        echo __('MARCELO EXPÓSITO', 'thememexposito') . '<br>';
+        echo date('Y');
+        @endphp
+      </div>
+
+    </div>
+
   </div>
 
 </div>

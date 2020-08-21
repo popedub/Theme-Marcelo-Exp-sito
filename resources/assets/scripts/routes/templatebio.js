@@ -1,12 +1,8 @@
 export default {
   init() {
-
-    /*Menu-toggle*/
-    // $('#index li a').click(function (e) {
-    //   e.preventDefault();
-    //   $('this').toggleClass('active');
-    // });
-
+    $(document).ready(function () {
+      $('div.links-destacados p a').wrap('<div class="arrow"></div>');
+    })
     /*Scroll Spy*/
     $('body').scrollspy({ target: '#index', offset: 150 });
 
