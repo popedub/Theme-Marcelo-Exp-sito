@@ -13,7 +13,7 @@
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: filter 0.3s ease-in-out;
+  transition: filter, opacity 0.6s ease-in-out;
 }
 
 .quote {
@@ -32,7 +32,7 @@
 }
 
 .agenda {
-  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
 
   @include media-breakpoint-up(lg) {
     padding-top: $spacer * 2;
@@ -49,8 +49,13 @@
   font-size: 1rem;
   padding-bottom: 50px;
 
+  @include media-breakpoint-up(lg) {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
   @media (min-width: 1500px) {
-    font-size: 1.125rem;
+    line-height: 1.4;
   }
 
   .fecha {
@@ -66,13 +71,30 @@
     }
   }
 
+  .tipo-evento {
+    padding-left: 22px;
+    margin-top: -5px;
+    position: relative;
+    display: block;
+
+    @include media-breakpoint-up(lg) {
+      padding-left: 17px;
+    }
+
+    @media (min-width: 1500px) {
+      padding-left: 22px;
+    }
+  }
+
   a {
     border-bottom: 2px solid black;
+    transition: border-bottom 0.3s ease-in-out;
 
     &:focus,
     &:hover,
     &:focus-within {
       text-decoration: none;
+      border-bottom: 2px solid transparent;
     }
   }
 }
@@ -90,10 +112,26 @@
   }
 
   .enlaces-bio {
-    font-size: 1.75rem;
-    line-height: 1.1;
+    font-size: 1.85rem;
+    line-height: 1.3;
     margin-bottom: 50px;
-    padding-top: 50px;
+    padding-top: 65px;
+
+    @include media-breakpoint-up(lg) {
+      line-height: 1.2;
+    }
+
+    a {
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.3s ease-in-out;
+
+      &:focus-within,
+      &:focus,
+      &:hover,
+      &:active {
+        border-bottom: 2px solid black;
+      }
+    }
   }
 
   .social {
@@ -112,35 +150,35 @@
     margin-top: 150px;
     line-height: 1.4;
 
+    @include media-breakpoint-up(lg) {
+      line-height: 1.6;
+    }
+
+    @media (min-width: 1500px) {
+      line-height: 1.5;
+      line-height: 1.4;
+    }
+
     a {//stylelint-disable
+      border-bottom: 2px solid black;
       transition: border-bottom 0.3s ease-in-out;
       text-decoration: none;
       position: relative;
-
-      &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background: black;
-        bottom: 0;
-        left: 0;
-        transition: height 0.2s ease-in-out;
-      }
 
       &:focus,
       &:hover,
       &:active,
       &:focus-within {
-      &::before {
-        content: "";
-        height: 0;
-      }
+        border-bottom: 2px solid transparent;
       }
     }
+
     .info.txt-col-2 {
-      columns: 2;
+      columns: 1;
+
+      @include media-breakpoint-up(lg) {
+        columns: 2;
+      }
     }
 
     .info.txt-col-1 {
@@ -160,10 +198,12 @@
 
 #index {
   @include media-breakpoint-up(lg) {
-    padding-top: 50px;
+    padding-top: 65px;
     overflow: scroll;
     height: 100%;
     position: fixed;
+    padding-right: 10px;
+    line-height: 1.2  ;
   }
 }
 
@@ -171,10 +211,18 @@
   border: none;
   border-radius: 0;
   padding: 0;
+  display: flex;
+  margin-bottom: 1px;
+  transition: color 0.4s ease-in-out;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 0.8rem;
+  }
 
   &::before {
     content: "○";
     margin-right: 5px;
+    padding-top: 3px;
     font-size: 0.7rem;
     vertical-align: middle;
     display: inline-block;
@@ -185,6 +233,8 @@
   &:active,
   &:focus-within {
     outline: 0;
+    background-color: transparent;
+    color: black;
   }
 }
 

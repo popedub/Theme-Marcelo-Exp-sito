@@ -24,7 +24,7 @@
       <div class="col-12 col-lg-6">
 
         @if (@isset($representacion))
-        <div class="representacion mb-2 mb-lg-4">
+        <div class="representacion mb-lg-4">
           @php
           echo __('Representación:', 'thememexposito') . '<br>';
           @endphp
@@ -48,7 +48,7 @@
         @if (@isset($dossiers))
         <div class="dossier">
           @foreach ($dossiers as $item)
-          <a href="{{ $item->enlace }}" target="_blank">{{ $item->nombre }}</a>
+          <a href="{{ $item->enlace }}" target="_blank">{{ $item->nombre }}</a><br>
           @endforeach
         </div>
         @endif

@@ -1,21 +1,40 @@
 /** Search form */
 .search-form {
   @extend .form-inline;
+
+  max-width: 100%;
 }
 
 .search-form label {
   @extend .form-group;
 
   font-weight: normal;
+  max-width: 100%;
 }
 
 .search-form .search-field {
   @extend .form-control;
 }
 
+input.search-form {
+  @include media-breakpoint-up(md) {
+    font-size: 5vw;
+  }
+}
+
 .search-form .search-submit {
   @extend .btn;
   @extend .btn-secondary;
+}
+
+.search-form .search-field:placeholder-shown {
+  font-size: 5vw;
+  max-width: 100%;
+  color: black;
+
+  @include media-breakpoint-up(md) {
+    font-size: 5vw;
+  }
 }
 
 .form-control::placeholder,
@@ -31,6 +50,8 @@
 }
 
 .search-menu {
+  width: 90%;
+
   .search-form .search-submit {
     display: none;
   }
@@ -53,9 +74,12 @@
     }
 
     @include media-breakpoint-up(md) {
-      font-size: 2.4vw;
-      line-height: 1.1;
+      display: block;
+      font-size: 5vw;
+      line-height: 1.2;
       padding: 0;
+      width: 90%;
+      height: auto;
     }
   }
 }

@@ -25,6 +25,9 @@ class App extends Controller
         if (is_search()) {
             return sprintf(__('Search Results for %s', 'sage'), get_search_query());
         }
+        if (is_single()) {
+            return sprintf(__('Contenidos', 'thememexposito'));
+        }
         if (is_404()) {
             return __('Not Found', 'sage');
         }

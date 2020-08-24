@@ -9,24 +9,52 @@
     @php the_content() @endphp
   </div>
   <div class="content-sidebar">
+
+    @foreach ($categories as $cat)
+    {{ $cat->name }}@if(!$loop->last),@endif
+    @endforeach
     @if (has_post_thumbnail())
-    {{ the_post_thumbnail('full', ['class' => 'img-fluid']) }}
+    <figure class="figure mr-auto ml-auto">
+      {{ the_post_thumbnail('full', ['class' => 'figure-img img-fluid']) }}
+
+    </figure>
+
 
 
     @endif
     <div class="overlay-sidebar audio">
-      @php the_content() @endphp
+      @if ($audio)
+      @foreach ($audio as $item)
+      <h3>{{ $item->titulo }}</h3>
+      <audio controls>
+      <source src="{{ $item->url_audio }}" type="audio/mpge">
+      </audio>
+      <div>
+        {!! $item->descripcion !!}
+      </div>
+
+
+      @endforeach
+
+      @endif
     </div>
     <div class="overlay-sidebar video">
-      @if (@isset($video))
+      @if ($video)
+      @foreach ($video as $item)
+      <h3>{{ $item->titulo  }}</h3>
       <div class="embed-responsive embed-responsive-16by9">
-        {!! $video !!}
+        {!! $item->url !!}
       </div>
+      <div>
+        {!! $item->descripcion !!}
+      </div>
+      @endforeach
       @endif
 
     </div>
     <div class="overlay-sidebar imagenes">
-      @if (@isset($galeria))
+
+      @if ($galeria)
       @foreach ($galeria as $foto)
 
       <figure class="figure">
@@ -41,15 +69,37 @@
 
   <footer>
     <div class="buttons-group-fixed btn-group" role="group" arial-label="Audio, Vídeo, Imágenes ">
-      <button type="button" class="btn btn-outline-dark border-left-0 audio">@php
+      @if ($audio)
+      <button type="button" class="btn btn-outline-dark border-left-0 border-right-0 border-bottom-0 audio">
+        @php
         echo __('Audio', 'thememexposito')
         @endphp</button>
-      <button type="button" class="btn btn-outline-dark video">@php
+      @endif
+      @if ($video)
+      <button type="button" class="btn btn-outline-dark video
+      <?php if($audio) {
+            echo "border-bottom-0 border-right-0";
+          }else {
+            echo "border-bottom-0 border-right-0 border-left-0";
+          }
+        ?>
+      ">@php
         echo __('Vídeo', 'thememexposito')
         @endphp</button>
-      <button type="button" class="btn btn-outline-dark imagenes">@php
+      @endif
+      @if ($galeria)
+      <button type="button" class="btn btn-outline-dark imagenes
+        <?php
+          if($audio || $video) {
+            echo "border-right-0 border-bottom-0";
+          }
+        ?>
+      ">
+        @php
         echo __('Imágenes', 'thememexposito')
         @endphp</button>
+      @endif
+
     </div>
   </footer>
 </article>

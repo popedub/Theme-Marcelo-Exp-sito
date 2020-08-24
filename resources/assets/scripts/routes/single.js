@@ -15,7 +15,7 @@ export default {
         $('.btn-group').css('border-left', 'none');
       }
       if ($(this).hasClass('active')) {
-        console.log('aqui')
+
         setTimeout(function () {
           $('.entry-content').css('border-right', '1px solid transparent');
           $('.btn-group').css('border-left', '1px solid black');
@@ -34,7 +34,7 @@ export default {
         $('.btn-group').css('border-left', 'none');
       }
       if ($(this).hasClass('active')) {
-        console.log('aqui')
+
         setTimeout(function () {
           $('.entry-content').css('border-right', '1px solid transparent');
           $('.btn-group').css('border-left', '1px solid black');
@@ -57,7 +57,7 @@ export default {
       }
 
       if ($(this).hasClass('active')) {
-        console.log('aqui')
+
         setTimeout(function () {
           $('.entry-content').css('border-right', '1px solid transparent');
           $('.btn-group').css('border-left', '1px solid black');
@@ -83,12 +83,25 @@ export default {
       altura();
     })
 
-    var scroll =  $('.entry-content');
-    scroll.mouseenter(function(){
-      $('body').css('overflow', 'scroll');
-    })
-    scroll.mouseleave(function () {
-      $('body').css('overflow', 'hidden');
-    })
+    // var scroll =  $('.entry-content');
+    // scroll.mouseenter(function(){
+    //   $('body').css('overflow', 'scroll');
+    // })
+    // scroll.mouseleave(function () {
+    //   $('body').css('overflow', 'hidden');
+    // })
+
+    // var scroll2 = $('.content-sidebar ');
+    // scroll2.mouseenter(function () {
+    //   $('body').css('overflow', 'scroll');
+    //   $(this).css({
+    //     'position': 'relative',
+    //   });
+
+    // })
+    // scroll2.mouseleave(function () {
+    //   $('body').css('overflow', 'hidden');
+
+    // })
   },
 };

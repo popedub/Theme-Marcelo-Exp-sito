@@ -105,3 +105,13 @@ add_filter( 'get_search_form',function ( $form ) {
     </form>';
 return $form;
 } );
+
+add_filter('bladesvg', function () {
+return [
+'svg_path' => 'resources/svg',
+'spritesheet_url' => '',
+'sprite_prefix' => '',
+'inline' => true,
+'class' => ''
+];
+});

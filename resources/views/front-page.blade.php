@@ -22,8 +22,8 @@
     'post_type' => 'agenda',
     'post_status' => 'publish',
     'posts_per_page' => -1,
-    'orderby' => 'title',
-    'order' => 'ASC',
+    'orderby' => 'date',
+    'order' => 'DESC',
     );
     @endphp
     {{-- estas directivas están en el setup.php --}}
@@ -32,7 +32,9 @@
       <div class="item-agenda">
         <div class="fecha">
           @fecha_ini
-          @fecha_final
+          @fecha_final <br>
+          <span class="tipo-evento">@evento</span>
+
         </div>
         @php
         $link = get_field('enlace_evento')

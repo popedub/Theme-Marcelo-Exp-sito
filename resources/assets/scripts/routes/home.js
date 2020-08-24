@@ -26,10 +26,16 @@ export default {
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
     $('header.banner').mouseenter(function(){
-      $('.foto-home').css('filter', 'blur(7px)')
+      $('.foto-home').css({
+        'filter': 'blur(7px)',
+        'opacity': '0.8',
+      })
     })
     $('header.banner').mouseleave(function () {
-      $('.foto-home').css('filter', 'blur(0)')
+      $('.foto-home').css({
+        'filter': 'blur(0)',
+        'opacity': '1',
+      })
     })
   },
 };

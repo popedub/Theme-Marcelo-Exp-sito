@@ -12,22 +12,25 @@
         </span>
       </h2>
     </header>
-    <div class="date">
+    @php
+    $ini = get_field('fecha_inicio');
+    $end = get_field('fecha_final');
+    @endphp
+    <div class="date <?php if($end) echo "large"; ?>">
       @php
-        $ini = the_field('fecha_inicio');
-        $end = the_field('fecha_final');
-        if($ini) {
-          echo $ini;
-        }
-        if($end) {
-          echo $end;
-        }
+
+      if($ini) {
+      echo $ini;
+      }
+      if($end) {
+      echo $end;
+      }
       @endphp
     </div>
     @if (has_post_thumbnail())
     <div class="foto">
       @php
-      the_post_thumbnail( 'thumbnail' )
+      the_post_thumbnail( 'large' )
       @endphp
     </div>
 

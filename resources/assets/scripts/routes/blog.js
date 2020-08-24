@@ -171,7 +171,8 @@ export default {
         //para mostrar las descriptiones de las categorias
         var clase = accents.remove($titular)
         clase = clase.toLowerCase();
-        console.log(clase)
+        clase = clase.replace(/\s+/g, '-');
+
 
         if ($(this).text() != $('.titular h2').text()){
           $('.titular h2').remove();
@@ -201,15 +202,30 @@ export default {
 
         var $titular = $(this).text();
         var $old_titular = $('.page-header h1').text();
+        var clase = accents.remove($titular)
+        clase = clase.toLowerCase();
+        clase = clase.replace(/\s+/g, '-');
+        console.log(clase)
 
 
         if ($(this).text() != $('.page-header h1').text()) {
           $('.page-header h1').remove();
           $('.page-header').append('<h1>' + $titular + '</h1>');
 
+          if ($('.descripcion').hasClass(clase)) {
+            $('.descripcion-contenidos').addClass('d-none');
+            $('.descripcion').addClass('d-none');
+            $('.descripcion' + '.' + clase).toggleClass('d-none');
+          }
+
         } else if ($titular === $old_titular) {
           $('.page-header h1').remove();
           $('.page-header').append('<h1>' + 'Contenidos' + '</h1>');
+          if ($('.descripcion').hasClass(clase)) {
+
+            $('.descripcion' + '.' + clase).toggleClass('d-none');
+            $('.descripcion-contenidos').toggleClass('d-none');
+          }
         }
 
       });

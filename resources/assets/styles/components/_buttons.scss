@@ -1,10 +1,22 @@
 .filter-button-group a {
   cursor: pointer;
   text-align: left;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 0.8rem;
+
+  &:active,
+  &:focus,
+  &:hover,
+  &:focus-within {
+    box-shadow: none;
+    outline: none;
+  }
 
   &::before {
     content: "○";
     margin-right: 5px;
+    margin-bottom: 2px;
     font-size: 0.7rem;
     vertical-align: middle;
     display: inline-block;
@@ -15,6 +27,7 @@
   &::before {
     content: "●";
     margin-right: 5px;
+    margin-bottom: 2px;
     font-size: 0.7rem;
     vertical-align: middle;
     display: inline-block;
