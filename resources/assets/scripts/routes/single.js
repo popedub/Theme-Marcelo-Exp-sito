@@ -1,7 +1,20 @@
+
 export default {
   init() {
     // JavaScript to be fired on the about us page
+    $(document).ready(function () {
 
+      $('.link-filtro').click(function(){
+        var getFiltro = '.category-' + $(this).data('filter');
+
+        localStorage.setItem('itemFiltro', getFiltro);
+
+      })
+
+
+
+
+    })
 
     $('button.audio').click(function () {
       $(this).siblings().removeClass('active')

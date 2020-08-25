@@ -10,7 +10,6 @@
     {!! $texto_contenidos !!}
   </div>
 
-
   @foreach ($descripcion as $item)
   <div class="descripcion {{ $item->slug }} d-none">
     <p>{{ $item->description }}</p>

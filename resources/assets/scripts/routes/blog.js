@@ -1,7 +1,16 @@
 var accents = require('remove-accents');
+
 export default {
   init() {
     // JavaScript to be fired on the home page
+    $(document).ready(function(){
+      $('.btn-link').each(function(){
+        if ($(this).data('filter') === localStorage.getItem('itemFiltro')) {
+          $(this).addClass('active')
+        }
+
+      })
+    })
   },
   finalize() {
     // JavaScript to be fired on the home page, after the init JS
@@ -29,6 +38,10 @@ export default {
       // layout Isotope after each image loads
       $grid.imagesLoaded(function () {
         $grid.isotope('layout');
+
+        //filter si venimos de la página de single
+        $grid.isotope({ filter: localStorage.getItem('itemFiltro') });
+        localStorage.clear();
       });
 
       var borderItems = function(articles){

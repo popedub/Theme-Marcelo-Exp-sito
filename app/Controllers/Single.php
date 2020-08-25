@@ -18,6 +18,7 @@ class Single extends Controller
         ->map(function ($category) {
         return (object) [
         'name' => $category->name,
+        'slug' => $category->slug,
         ];
         });
         return $categories;

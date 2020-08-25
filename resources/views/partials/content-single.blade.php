@@ -1,8 +1,13 @@
 <article @php (post_class()) @endphp>
   <header>
     <h1 class="entry-title">{!! get_the_title() !!}</h1>
+    @if ($subtitulo)
     <h2 class="subtitle text-uppercase">{{ $subtitulo }}</h2>
-    <div class="date">{{ $fecha_inicio }}{{ $fecha_final }}</div>
+    @endif
+    @if ($fecha_inicio || $fecha_final)
+      <div class="date">{{ $fecha_inicio }}{{ $fecha_final }}</div>
+    @endif
+
   </header>
   <div class="entry-content">
 
@@ -10,9 +15,8 @@
   </div>
   <div class="content-sidebar">
 
-    @foreach ($categories as $cat)
-    {{ $cat->name }}@if(!$loop->last),@endif
-    @endforeach
+
+    @include('partials/form-filter')
     @if (has_post_thumbnail())
     <figure class="figure mr-auto ml-auto">
       {{ the_post_thumbnail('full', ['class' => 'figure-img img-fluid']) }}
