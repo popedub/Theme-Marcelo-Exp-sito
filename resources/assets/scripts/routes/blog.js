@@ -186,20 +186,21 @@ export default {
       //cambiamos el titular de la página de filtros
 
         $('.texto-titular').on('click', 'a', function () {
-          // get text form buttom
+          // get text from buttom
 
           var $titular = $(this).text();
           var $old_titular = $('.titular h2').text();
 
+          $old_titular = accents.remove($old_titular).toLowerCase();
           //para mostrar las descriptiones de las categorias
-          var clase = accents.remove($titular)
-          clase = clase.toLowerCase();
+          $titular = accents.remove($titular).toLowerCase();
+          var clase = $titular;
           clase = clase.replace(/\s+/g, '-');
 
 
-          if ($(this).text() != $('.titular h2').text()) {
+          if ($titular != $old_titular) {
             $('.titular h2').remove();
-            $('.titular').append('<h2>' + $titular + '</h2>');
+            $('.titular').append('<h2>' + $(this).text() + '</h2>');
             $('.descripcion-contenidos').addClass('d-none');
             $('.descripcion').addClass('d-none');
             $('.descripcion' + '.' + clase).toggleClass('d-none');
@@ -212,7 +213,7 @@ export default {
 
 
           } else if ($titular === $old_titular) {
-
+            console.log('mismo texto')
             $('.titular h2').toggleClass('invisible');
 
             $('.descripcion').each(function () {

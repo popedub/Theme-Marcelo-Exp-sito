@@ -198,16 +198,6 @@ body.home {
       position: absolute;
       max-width: 75%;
     }
-
-    // .container-fluid {
-    //   padding-left: 0;
-    //   padding-right: 0;
-
-    //   @include media-breakpoint-up(lg) {
-    //     padding-left: 15px;
-    //     padding-right: 15px;
-    //   }
-    // }
   }
 
   h2 {
@@ -231,7 +221,7 @@ body.home {
     margin-top: 15px;
 
     @include media-breakpoint-up(xl) {
-      margin-top: 30px;
+      margin-top: 15px;
     }
 
     @media (min-width: 1500px) {

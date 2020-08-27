@@ -13,6 +13,7 @@ html {
 
 body {
   position: relative;
+  height: 100%;
 }
 
 body.home {
@@ -67,10 +68,10 @@ a {
 @font-face {
   font-family: "Everett";
   src:
-    url("./fonts/Everett-Regular.woff2") format("woff2"),
-    url("./fonts/Everett-Regular.woff") format("woff"),
-    url("./fonts/Everett-Regular.ttf") format("truetype"),
-    url("./fonts/Everett-Regular.svg#Everett-Regular") format("svg");
+    url("./fonts/Everett-Regular-web.woff2") format("woff2"),
+    url("./fonts/Everett-Regular-web.woff") format("woff"),
+    url("./fonts/Everett-Regular-web.ttf") format("truetype"),
+    url("./fonts/Everett-Regular-web.svg#Everett-Regular") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

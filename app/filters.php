@@ -108,7 +108,7 @@ return $form;
 
 add_filter('bladesvg', function () {
 return [
-'svg_path' => 'resources/svg',
+'svg_path' => 'resources/assets/svg',
 'spritesheet_url' => '',
 'sprite_prefix' => '',
 'inline' => true,

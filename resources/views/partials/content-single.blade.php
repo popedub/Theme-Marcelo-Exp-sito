@@ -20,6 +20,26 @@
     </div>
     @endif
     @php the_content() @endphp
+    <div class="footer-content">
+      <div class="back">
+        <a href="<?php echo get_permalink(92) ?>" class="">
+          @php echo __('Volver a contenidos', 'thememexposito') @endphp
+        </a>
+      </div>
+    <div class="footer">
+        <div class="row">
+          <div class="col-12 m">
+            @php
+            echo __('MARCELO EXPÓSITO', 'thememexposito') . '<br>';
+            echo date('Y');
+            @endphp
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
   </div>
   <div class="content-sidebar">
 
@@ -38,6 +58,10 @@
       @if ($audio)
       @foreach ($audio as $item)
       <div class="item-sidebar">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>@php echo __('AUDIO', 'thememexposito') @endphp</h2>
+          @svg('close-left', 'arrow-left')
+        </div>
         <h3>{{ $item->titulo }}</h3>
         <audio controls>
           <source src="{{ $item->url_audio }}" type="audio/mpge">
@@ -55,13 +79,17 @@
       @if ($video)
       @foreach ($video as $item)
       <div class="item-sidebar">
-      <h3>{{ $item->titulo  }}</h3>
-      <div class="embed-responsive embed-responsive-16by9">
-        {!! $item->url !!}
-      </div>
-      <div class="mt-3">
-        {!! $item->descripcion !!}
-      </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>@php echo __('VÍDEO', 'thememexposito') @endphp</h2>
+          @svg('close-left', 'arrow-left')
+        </div>
+        <h3>{{ $item->titulo  }}</h3>
+        <div class="embed-responsive embed-responsive-16by9">
+          {!! $item->url !!}
+        </div>
+        <div class="mt-3">
+          {!! $item->descripcion !!}
+        </div>
       </div>
       @endforeach
       @endif
@@ -71,6 +99,11 @@
 
       @if ($galeria)
       <div class="galeria-single">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>@php echo __('IMAGENES', 'thememexposito') @endphp</h2>
+          @svg('close-left', 'arrow-left')
+        </div>
+
         @foreach ($galeria as $foto)
 
         <figure class="figure">
@@ -110,6 +143,9 @@
           if($audio || $video) {
             echo "border-right-0 border-bottom-0";
           }
+          if(!$audio && !$video) {
+            echo "border-right-0 border-bottom-0 border-left-0";
+          }
         ?>
       ">
         @php
@@ -119,4 +155,9 @@
 
     </div>
   </footer>
+
+
+
+
 </article>
+@svg('close-left','back-top')
