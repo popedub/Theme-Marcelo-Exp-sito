@@ -5,12 +5,20 @@
     <h2 class="subtitle text-uppercase">{{ $subtitulo }}</h2>
     @endif
     @if ($fecha_inicio || $fecha_final)
-      <div class="date">{{ $fecha_inicio }}{{ $fecha_final }}</div>
+    <div class="date">{{ $fecha_inicio }}{{ $fecha_final }}</div>
     @endif
 
   </header>
   <div class="entry-content">
-
+    @if (@isset($links_destacados))
+    <div class="mb-5">
+      @foreach ($links_destacados as $link)
+      <div class="arrow">
+        <a href="{{ $link->enlace }}" target="_blank">{{ $link->texto }}</a>
+      </div>
+      @endforeach
+    </div>
+    @endif
     @php the_content() @endphp
   </div>
   <div class="content-sidebar">
@@ -29,14 +37,15 @@
     <div class="overlay-sidebar audio">
       @if ($audio)
       @foreach ($audio as $item)
-      <h3>{{ $item->titulo }}</h3>
-      <audio controls>
-      <source src="{{ $item->url_audio }}" type="audio/mpge">
-      </audio>
-      <div>
-        {!! $item->descripcion !!}
+      <div class="item-sidebar">
+        <h3>{{ $item->titulo }}</h3>
+        <audio controls>
+          <source src="{{ $item->url_audio }}" type="audio/mpge">
+        </audio>
+        <div class="mt-3">
+          {!! $item->descripcion !!}
+        </div>
       </div>
-
 
       @endforeach
 
@@ -45,12 +54,14 @@
     <div class="overlay-sidebar video">
       @if ($video)
       @foreach ($video as $item)
+      <div class="item-sidebar">
       <h3>{{ $item->titulo  }}</h3>
       <div class="embed-responsive embed-responsive-16by9">
         {!! $item->url !!}
       </div>
-      <div>
+      <div class="mt-3">
         {!! $item->descripcion !!}
+      </div>
       </div>
       @endforeach
       @endif
@@ -59,14 +70,16 @@
     <div class="overlay-sidebar imagenes">
 
       @if ($galeria)
-      @foreach ($galeria as $foto)
+      <div class="galeria-single">
+        @foreach ($galeria as $foto)
 
-      <figure class="figure">
-        <img class="figure-img img-fluid" src="{{ $foto->url }}" alt="{{ $foto->alt }}">
-        <figcaption class="figure-caption">{{ $foto->caption }}</figcaption>
-      </figure>
+        <figure class="figure">
+          <img class="figure-img img-fluid" src="{{ $foto->url }}" alt="{{ $foto->alt }}">
+          <figcaption class="figure-caption">{{ $foto->caption }}</figcaption>
+        </figure>
 
-      @endforeach
+        @endforeach
+      </div>
       @endif
     </div>
   </div>

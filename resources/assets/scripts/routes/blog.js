@@ -10,6 +10,15 @@ export default {
         }
 
       })
+      if (localStorage.getItem('itemTitular')){
+        $('.titular h2').remove();
+        $('.titular').append('<h2>' + localStorage.getItem('itemTitular') + '</h2>');
+        $('.descripcion').addClass('d-none');
+        $('.descripcion-contenidos').addClass('d-none');
+        $('.descripcion' + '.' + localStorage.getItem('itemTitular')).toggleClass('d-none');
+      }
+
+
     })
   },
   finalize() {
@@ -175,42 +184,60 @@ export default {
         return value;
       }
       //cambiamos el titular de la página de filtros
-      $('.texto-titular').on('click', 'a', function () {
-        // get text form buttom
 
-        var $titular = $(this).text();
-        var $old_titular = $('.titular h2').text();
+        $('.texto-titular').on('click', 'a', function () {
+          // get text form buttom
 
-        //para mostrar las descriptiones de las categorias
-        var clase = accents.remove($titular)
-        clase = clase.toLowerCase();
-        clase = clase.replace(/\s+/g, '-');
+          var $titular = $(this).text();
+          var $old_titular = $('.titular h2').text();
+
+          //para mostrar las descriptiones de las categorias
+          var clase = accents.remove($titular)
+          clase = clase.toLowerCase();
+          clase = clase.replace(/\s+/g, '-');
 
 
-        if ($(this).text() != $('.titular h2').text()){
-          $('.titular h2').remove();
-          $('.titular').append('<h2>' + $titular + '</h2>');
-
-          if ($('.descripcion').hasClass(clase)){
+          if ($(this).text() != $('.titular h2').text()) {
+            $('.titular h2').remove();
+            $('.titular').append('<h2>' + $titular + '</h2>');
             $('.descripcion-contenidos').addClass('d-none');
             $('.descripcion').addClass('d-none');
-            $('.descripcion' + '.' + clase ).toggleClass('d-none');
-          }
+            $('.descripcion' + '.' + clase).toggleClass('d-none');
+
+            if ($('.descripcion').hasClass(clase)) {
+              $('.descripcion-contenidos').addClass('d-none');
+              $('.descripcion').addClass('d-none');
+              $('.descripcion' + '.' + clase).toggleClass('d-none');
+            }
 
 
-        } else if ($titular === $old_titular ) {
+          } else if ($titular === $old_titular) {
 
-          $('.titular h2').toggleClass('invisible');
-          if ($('.descripcion').hasClass(clase)) {
+            $('.titular h2').toggleClass('invisible');
+
+            $('.descripcion').each(function () {
+              if (!$(this).hasClass(clase)) {
+
+                $(this).addClass('d-none')
+              }
+
+            })
 
             $('.descripcion' + '.' + clase).toggleClass('d-none');
             $('.descripcion-contenidos').toggleClass('d-none');
+
+            if (!$('.descripcion' + '.' + clase).hasClass('d-none')) {
+              $('.descripcion-contenidos').addClass('d-none')
+
+
+            }
+
           }
 
-        }
+        });
 
-      });
-      $('.texto-header').on('click', 'a', function () {
+
+       $('.texto-header').on('click', 'a', function () {
         // get text form buttom
 
         var $titular = $(this).text();
@@ -218,7 +245,7 @@ export default {
         var clase = accents.remove($titular)
         clase = clase.toLowerCase();
         clase = clase.replace(/\s+/g, '-');
-        console.log(clase)
+
 
 
         if ($(this).text() != $('.page-header h1').text()) {
@@ -228,7 +255,7 @@ export default {
           if ($('.descripcion').hasClass(clase)) {
             $('.descripcion-contenidos').addClass('d-none');
             $('.descripcion').addClass('d-none');
-            $('.descripcion' + '.' + clase).toggleClass('d-none');
+            $('.descripcion' + '.' + clase).addClass('parent').toggleClass('d-none');
           }
 
         } else if ($titular === $old_titular) {
@@ -242,6 +269,7 @@ export default {
         }
 
       });
+
       //cuándo isotope ha renderizado los elementos, check el border-right
       $grid.on('layoutComplete',
         // eslint-disable-next-line no-unused-vars

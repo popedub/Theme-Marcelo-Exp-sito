@@ -41,14 +41,20 @@
 
 .left,
 .right {
-  width: 50%;
-  height: 100%;
+  width: 100%;
   float: left;
   position: relative;
+
+  @include media-breakpoint-up(lg) {
+    width: 50%;
+    height: 100%;
+  }
 }
 
 .left {
-  border-right: 1px solid black;
+  @include media-breakpoint-up(lg) {
+    border-right: 1px solid black;
+  }
 }
 
 .right {
@@ -75,7 +81,7 @@
 
 .languages {
   @include media-breakpoint-up(lg) {
-    padding-top: 60vh;
+    padding-top: 50vh;
   }
 }
 
@@ -180,18 +186,28 @@ body:not(.home) {
 
 body.home {
   header.banner {
-    position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: transparent;
     z-index: 1;
+    position: relative;
 
     @include media-breakpoint-up(lg) {
       position: absolute;
       max-width: 75%;
     }
+
+    // .container-fluid {
+    //   padding-left: 0;
+    //   padding-right: 0;
+
+    //   @include media-breakpoint-up(lg) {
+    //     padding-left: 15px;
+    //     padding-right: 15px;
+    //   }
+    // }
   }
 
   h2 {
@@ -240,8 +256,12 @@ body.home {
   }
 
   .header-right {
-    border-right: 1px solid black;
-    height: 100vh;
+    max-width: 100%;
+
+    @include media-breakpoint-up(lg) {
+      border-right: 1px solid black;
+      height: 100vh;
+    }
   }
 }
 

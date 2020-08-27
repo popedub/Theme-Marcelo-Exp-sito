@@ -21,6 +21,16 @@ body.home {
   @include media-breakpoint-up(lg) {
     overflow: hidden;
   }
+
+  .wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @include media-breakpoint-up(lg) {
+      position: relative;
+    }
+  }
 }
 
 h1 {
@@ -73,4 +83,12 @@ h4,
 h5,
 h6 {
   font-family: "Everett", Arial, Helvetica, sans-serif;
+}
+
+.page-header {
+  display: none;
+
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
 }

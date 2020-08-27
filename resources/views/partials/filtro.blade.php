@@ -5,7 +5,7 @@
 
 
 </div>
-<div class="btn-group-vertical button-group filter-button-group mt-5 texto-titular" data-filter-group="actividades"
+<div class="btn-group-vertical button-group filter-button-group mt-2 texto-titular" data-filter-group="actividades"
   role="group">
   @foreach ($filter_cat as $cat)
   <a data-filter=".category-{{ $cat->slug }}" class="btn btn-link {{ $cat->slug }}">{{ $cat->name }}</a>

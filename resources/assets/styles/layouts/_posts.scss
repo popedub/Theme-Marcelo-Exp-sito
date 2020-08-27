@@ -18,9 +18,12 @@ body.blog {
     @extend .col-12;
     @extend .col-lg-2;
 
+    margin-top: 50px;
+
     @include media-breakpoint-up(lg) {
       position: sticky;
       top: 4rem;
+      margin-top: 0;
       height: calc(100vh - 4rem);
       padding-left: 0;
       padding-right: 0;
@@ -33,11 +36,20 @@ body.blog {
     @extend .col-lg-4;
   }
 
+  .grid {
+    margin-top: 50px;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 0;
+    }
+  }
+
   article {
     @extend .col-12;
     @extend .col-lg-4;
 
     position: relative;
+    height: 350px;
 
     @include media-breakpoint-up(lg) {
       padding-top: 15px;
@@ -116,14 +128,19 @@ body.blog {
   }
 
   .titular {
-    padding-bottom: 300px;
+    @include media-breakpoint-up(lg) {
+      padding-bottom: 300px;
+    }
   }
 
   .titular h2 {
     //stylelint-disable
-    font-size: 6rem;
+    font-size: 2.5rem;
     text-transform: uppercase;
     font-weight: 400;
+    @include media-breakpoint-up(lg) {
+      font-size: 6rem;
+    }
   }
 
   .descripcion p,
@@ -222,6 +239,19 @@ body.single {
 
     .entry-content {
       border-right: 1px solid black;
+
+      a {
+        border-bottom: 2px solid black;
+        transition: border-bottom 0.3s ease-in-out;
+        position: relative;
+
+          &:active,
+          &:focus,
+          &:hover,
+          &:focus-within {
+            border-bottom: 2px solid transparent;
+          }
+        }
     }
 
     .content-sidebar {
@@ -230,8 +260,6 @@ body.single {
 
       @include media-breakpoint-up(lg) {
         height: auto;
-        //position: fixed;
-        //right: 0;
       }
 
       figure {
@@ -241,6 +269,8 @@ body.single {
 
       .figure-caption {
         color:white;
+        font-size: 0.8rem;
+        font-weight: 200;
       }
     }
   }
@@ -251,12 +281,27 @@ body.single {
   right: 0;
   bottom: 0;
   width: 50%;
-  height: 40px;
+  height: 50px;
   z-index: 2;
   background-color: white;
 
   button {
     border-radius: 0;
+    line-height: 1;
+    border-color: black !important;
+
+    &:active,
+    &:focus,
+    &:hover,
+    &:focus-within {
+      box-shadow: none;
+      outline: none;
+      background-color: black;
+    }
+  }
+
+  button.active {
+    background-color: black !important;
   }
 }
 
@@ -274,9 +319,49 @@ body.single {
   overflow: scroll;
   transition: 0.4s ease-in-out;
   border-left: 1px solid black;
+
+  h3 {
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+
+  p {
+    font-weight: 200;
+  }
+}
+
+.overlay-sidebar.video,
+.overlay-sidebar.audio,
+.overlay-sidebar.imagenes {
+  @include media-breakpoint-up(lg) {
+    padding: 50px 5%;
+  }
 }
 
 .overlay-sidebar.show-sidebar {
   transform: translateX(0);
   right: 0;
+}
+
+.galeria-single {
+  margin-top: 50px;
+
+  figure {
+    padding: 6% 0 !important;
+  }
+}
+
+.item-sidebar {
+  margin-bottom: 50px;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 150px;
+  }
+}
+
+.figure-img,
+.wp-caption img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }

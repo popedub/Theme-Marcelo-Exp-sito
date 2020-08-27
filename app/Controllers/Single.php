@@ -11,9 +11,19 @@ class Single extends Controller
         public function categories()
         {
 
+
         $categories = collect(get_the_category())
         ->filter(function ($category) {
-        return $category->slug !== 'sin-categoria';
+        return $category->slug !== 'proyectos-en-proceso';
+        })
+        ->filter(function ($category) {
+        return $category->slug !== 'archivo-general';
+        })
+        ->filter(function ($category) {
+        return $category->slug !== 'projects-in-process';
+        })
+        ->filter(function ($category) {
+        return $category->slug !== 'general-archive';
         })
         ->map(function ($category) {
         return (object) [

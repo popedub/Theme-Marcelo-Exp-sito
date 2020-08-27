@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-12 col-lg-10 contenido">
+  <div class="col-12 col-lg-10 contenido order-2 order-lg-1">
     <div class="row enlaces-bio">
       <div class="col-12 col-lg-6">
         @if (@isset($email))
@@ -69,7 +69,8 @@
     <section id="secction{{ $loop->index }}" class="mb-5">
       <h3 class="text-center mb-5">
         {!! $item->texto_menu !!}<br>
-        {!! $item->titular_contenido!!}
+        <span class="sub-ti">{!! $item->titular_contenido!!}</span>
+
       </h3>
       <div class="info txt-col-{{ $item->columnas }}">
         {!! $item->contenido_seccion !!}
@@ -86,7 +87,7 @@
     @endif
     @php the_content() @endphp
   </div>
-  <div class="col-12 col-lg-2">
+  <div class="col-12 col-lg-2 order-1 order-lg-2">
     @if (@isset($biografia))
     <div id="index" class="list-group">
       @forelse ($biografia as $item)

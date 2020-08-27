@@ -10,7 +10,12 @@ class Home extends Controller
 
     public function descripcion()
     {
-        $categories = collect(get_categories())
+        $arg = array(
+            'taxonomy' => 'category',
+            'exclude' => array (11, 2),
+        );
+
+        $categories = collect(get_terms($arg))
         ->filter(function ($category) {
         return $category->slug !== 'sin-categoria';
         })

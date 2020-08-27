@@ -6,8 +6,9 @@ export default {
 
       $('.link-filtro').click(function(){
         var getFiltro = '.category-' + $(this).data('filter');
-
+        var titular = $(this).data('filter')
         localStorage.setItem('itemFiltro', getFiltro);
+        localStorage.setItem('itemTitular', titular);
 
       })
 
