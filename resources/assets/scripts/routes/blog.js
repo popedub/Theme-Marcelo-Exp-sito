@@ -11,11 +11,13 @@ export default {
 
       })
       if (localStorage.getItem('itemTitular')){
+        var clase = localStorage.getItem('itemTitular')
+        clase = accents.remove(clase).toLowerCase();
         $('.titular h2').remove();
         $('.titular').append('<h2>' + localStorage.getItem('itemTitular') + '</h2>');
         $('.descripcion').addClass('d-none');
         $('.descripcion-contenidos').addClass('d-none');
-        $('.descripcion' + '.' + localStorage.getItem('itemTitular')).toggleClass('d-none');
+        $('.descripcion' + '.' + clase).toggleClass('d-none');
       }
 
 

@@ -6,7 +6,7 @@
       <div class="col-12 col-lg-6 header-right">
         <h2><span>MARCELO</span></h2>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6 header-left">
         <h1><span>EXPÓSITO</span></h1>
         <nav class="nav-primary">
           @if (has_nav_menu('primary_navigation'))

@@ -246,10 +246,14 @@ body.home {
   }
 
   .header-right {
-    max-width: 100%;
-
     @include media-breakpoint-up(lg) {
       border-right: 1px solid black;
+      height: 100vh;
+    }
+  }
+
+  .header-left {
+    @include media-breakpoint-up(lg) {
       height: 100vh;
     }
   }

@@ -54,6 +54,7 @@ class Home extends Controller
         $arg = array(
         'taxonomy' => 'category',
         'include' => array (11, 2),
+        'order' => 'DESC',
         );
         $categories = collect(get_terms($arg))
         ->filter(function ($category) {

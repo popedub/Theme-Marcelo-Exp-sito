@@ -10,7 +10,7 @@
 
   </header>
   <div class="entry-content">
-    @if (@isset($links_destacados))
+    @if ($links_destacados)
     <div class="mb-5">
       @foreach ($links_destacados as $link)
       <div class="arrow">
@@ -21,12 +21,15 @@
     @endif
     @php the_content() @endphp
     <div class="footer-content">
-      <div class="back">
-        <a href="<?php echo get_permalink(92) ?>" class="">
+
+      <a href="<?php echo get_permalink(92) ?>" class="back">
+        <p>
           @php echo __('Volver a contenidos', 'thememexposito') @endphp
-        </a>
-      </div>
-    <div class="footer">
+        </p>
+
+      </a>
+
+      <div class="footer">
         <div class="row">
           <div class="col-12 m">
             @php
@@ -58,10 +61,12 @@
       @if ($audio)
       @foreach ($audio as $item)
       <div class="item-sidebar">
+        @if ($loop->first)
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h2>@php echo __('AUDIO', 'thememexposito') @endphp</h2>
           @svg('close-left', 'arrow-left')
         </div>
+        @endif
         <h3>{{ $item->titulo }}</h3>
         <audio controls>
           <source src="{{ $item->url_audio }}" type="audio/mpge">
@@ -79,10 +84,12 @@
       @if ($video)
       @foreach ($video as $item)
       <div class="item-sidebar">
+        @if ($loop->first)
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h2>@php echo __('VÍDEO', 'thememexposito') @endphp</h2>
           @svg('close-left', 'arrow-left')
         </div>
+        @endif
         <h3>{{ $item->titulo  }}</h3>
         <div class="embed-responsive embed-responsive-16by9">
           {!! $item->url !!}
@@ -100,7 +107,7 @@
       @if ($galeria)
       <div class="galeria-single">
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h2>@php echo __('IMAGENES', 'thememexposito') @endphp</h2>
+          <h2>@php echo __('IMÁGENES', 'thememexposito') @endphp</h2>
           @svg('close-left', 'arrow-left')
         </div>
 

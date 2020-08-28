@@ -6,10 +6,7 @@ export default {
       $('h2').bigtext();
       $('h1').bigtext();
     })
-    $(window).resize(function(){
-      $('h2').bigtext();
-      $('h1').bigtext();
-    })
+
 
     $(document).ready(function () {
       $('.galeria').slick({
@@ -36,6 +33,11 @@ export default {
         'filter': 'blur(0)',
         'opacity': '1',
       })
+    })
+
+    $(window).resize(function () {
+      $('h2').bigtext();
+      $('h1').bigtext();
     })
   },
 };

@@ -33,3 +33,19 @@
     display: inline-block;
   }
 }
+
+button {
+  &:active,
+  &:focus,
+  &:hover,
+  &:focus-within {
+    box-shadow: none;
+    outline: 0;
+  }
+}
+
+button.active,
+.btn-outline-dark.active:focus {
+  outline: 0;
+  box-shadow: none !important;
+}

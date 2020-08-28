@@ -44,6 +44,18 @@ body.blog {
     }
   }
 
+  .article {
+    color: black;
+    transition: color 0.3s ease-in-out;
+
+    &:active,
+    &:focus,
+    &:hover,
+    &:focus-within {
+      color: gray;
+    }
+  }
+
   article {
     @extend .col-12;
     @extend .col-lg-4;
@@ -186,13 +198,10 @@ body.blog {
 //SINGLE VIEW
 
 body.single {
-  //overflow: hidden;
-
   article {
     @extend .row;
 
     background-color: white;
-
     header {
       @extend .col-12;
 
@@ -205,9 +214,13 @@ body.single {
       margin-top: 34px; //altura del header.banner
       padding-top: 15px;
       padding-bottom: 15px;
+      padding-left: 5%;
+      padding-right: 5%;
 
       @include media-breakpoint-up(lg) {
         position: fixed;
+        padding-left: 10%;
+        padding-right: 10%;
       }
 
       h1 {
@@ -243,23 +256,23 @@ body.single {
       padding-top: 30px;
       background-color: white;
       border-top: 1px solid black;
-    }
-
-    .entry-content {
-      border-right: 1px solid black;
 
       a {
         border-bottom: 2px solid black;
         transition: border-bottom 0.3s ease-in-out;
         position: relative;
 
-          &:active,
-          &:focus,
-          &:hover,
-          &:focus-within {
-            border-bottom: 2px solid transparent;
-          }
+        &:active,
+        &:focus,
+        &:hover,
+        &:focus-within {
+          border-bottom: 2px solid transparent;
         }
+      }
+    }
+
+    .entry-content {
+      border-right: 1px solid black;
     }
 
     .content-sidebar {
@@ -276,7 +289,7 @@ body.single {
       }
 
       .figure-caption {
-        color:white;
+        color: white;
         font-size: 0.8rem;
         font-weight: 200;
       }
@@ -336,12 +349,17 @@ body.single {
   h3 {
     margin-top: 50px;
     margin-bottom: 50px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 200;
   }
 
   p {
     font-weight: 200;
+    font-size: 0.8rem;
+  }
+
+  audio {
+    width: 100%;
   }
 }
 
@@ -366,14 +384,6 @@ body.single {
   }
 }
 
-.item-sidebar {
-  //margin-bottom: 50px;
-
-  @include media-breakpoint-up(lg) {
-    //margin-top: 50px;
-  }
-}
-
 .figure-img,
 .wp-caption img {
   margin-left: auto;
@@ -385,6 +395,8 @@ body.single {
   width: 45px;
   height: 45px;
   cursor: pointer;
+  position: absolute;
+  right: 15px;
 }
 
 .footer-content {
@@ -402,18 +414,23 @@ body.single {
   padding-left: 15px;
   display: flex;
   align-content: center;
+  border-bottom: none !important;
+  background-color: white;
+  transition: background-color 0.3s ease-in-out !important;
 
-  a {
-    border-bottom: 2px solid transparent !important;
+  p {
     align-self: center;
+    margin-bottom: 0;
+  }
 
     &:active,
     &:focus,
     &:hover,
     &:focus-within {
-      border-bottom: 2px solid black !important;
+      border-bottom: none !important;
+      background-color: black;
+      color: white;
     }
-  }
 }
 
 .back-top {

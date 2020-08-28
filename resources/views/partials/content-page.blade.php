@@ -2,7 +2,7 @@
   <div class="col-12 col-lg-10 contenido order-2 order-lg-1">
     <div class="row enlaces-bio">
       <div class="col-12 col-lg-6">
-        @if (@isset($email))
+        @if ($email)
         <div class="mail">
           <a href="mailto:{{ $email }}" target="_blank">
             @php
@@ -12,7 +12,7 @@
         </div>
         @endif
 
-        @if (@isset($redes))
+        @if ($redes)
         <div class="social">
           @foreach ($redes as $item)
           <a href="{{ $item->enlace }}" target="_blank">{{ $item->nombre }}</a><br>
@@ -23,7 +23,7 @@
 
       <div class="col-12 col-lg-6">
 
-        @if (@isset($representacion))
+        @if ($representacion)
         <div class="representacion mb-lg-4">
           @php
           echo __('Representación:', 'thememexposito') . '<br>';
@@ -34,7 +34,7 @@
         </div>
         @endif
 
-        @if (@isset($distribucion_de_video))
+        @if ($distribucion_de_video)
         <div class="video">
           @php
           echo __('Distribución del vídeo:', 'thememexposito') . '<br>';
@@ -45,17 +45,30 @@
         </div>
         @endif
 
-        @if (@isset($dossiers))
+        @if ($dossiers)
         <div class="dossier">
           @foreach ($dossiers as $item)
           <a href="{{ $item->enlace }}" target="_blank">{{ $item->nombre }}</a><br>
           @endforeach
+          <a href="" class="lightbox"><?php echo __('Descargar fotos personales', 'thememexposito'); ?></a>
+          <?php $galeria = get_field('galeria', 400)?>
+          @if ($galeria)
+          <div id="galeria" class="d-none">
+            @foreach ($galeria as $foto)
+            <a href="{{ $foto['url'] }}" class="slide-{{ $loop->index }}">
+              <img src="{{ $foto['url'] }}" alt="{{ $foto['alt'] }}">
+            </a>
+            @endforeach
+          </div>
+
+
+          @endif
         </div>
         @endif
 
       </div>
     </div>
-    @if (@isset($intro))
+    @if ($intro)
     <section class="intro-bio mt-4">
       <div class="info">
         {!! $intro !!}
@@ -64,14 +77,11 @@
 
     @endif
 
-    @if (@isset($biografia))
+    @if ($biografia)
     @forelse ($biografia as $item)
     <section id="secction{{ $loop->index }}" class="mb-5">
-      <h3 class="text-center mb-5">
-        {!! $item->texto_menu !!}<br>
-        <span class="sub-ti">{!! $item->titular_contenido!!}</span>
-
-      </h3>
+      <h3 class="text-center mb-0">{!! $item->texto_menu !!}</h3>
+      <div class="sub-ti mb-5 text-center">{!! $item->titular_contenido!!}</div>
       <div class="info txt-col-{{ $item->columnas }}">
         {!! $item->contenido_seccion !!}
 
@@ -88,7 +98,7 @@
     @php the_content() @endphp
   </div>
   <div class="col-12 col-lg-2 order-1 order-lg-2">
-    @if (@isset($biografia))
+    @if ($biografia)
     <div id="index" class="list-group">
       @forelse ($biografia as $item)
 

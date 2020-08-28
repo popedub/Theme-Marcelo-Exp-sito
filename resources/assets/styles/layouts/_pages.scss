@@ -3,114 +3,6 @@
   height: 100%;
 }
 
-.galeria {
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  display: none;
-
-  @include media-breakpoint-up(lg) {
-    position: relative;
-    display: block;
-  }
-}
-
-.foto-home {
-  width: 100%;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transition: filter, opacity 0.6s ease-in-out;
-}
-
-.quote {
-  position: absolute;
-  bottom: 0;
-  left: 15px;
-  width: 50%;
-
-  p {
-    font-size: 0.75rem;
-  }
-
-  blockquote p {
-    font-size: 1.1rem;
-  }
-}
-
-.agenda {
-  position: relative;
-  margin-top: 100vh;
-
-  @include media-breakpoint-up(lg) {
-    padding-top: $spacer * 2;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-left: 1px solid black;
-    overflow: scroll;
-    height: 100%;
-    position: fixed;
-    margin-top: 0;
-  }
-}
-
-.item-agenda {
-  font-size: 1rem;
-  padding-bottom: 50px;
-
-  @include media-breakpoint-up(lg) {
-    font-size: 0.8rem;
-    line-height: 1.5;
-  }
-
-  @media (min-width: 1500px) {
-    line-height: 1.4;
-  }
-
-  .fecha {
-    // font-size: 1.3rem;
-    margin-bottom: 20px;
-
-    &::before {
-      content: "⚫";
-      font-size: 0.5rem;
-      display: inline;
-      vertical-align: middle;
-      margin-right: 5px;
-    }
-  }
-
-  .tipo-evento {
-    padding-left: 22px;
-    margin-top: -5px;
-    position: relative;
-    display: block;
-
-    @include media-breakpoint-up(lg) {
-      padding-left: 17px;
-    }
-
-    @media (min-width: 1500px) {
-      padding-left: 22px;
-    }
-  }
-
-  a {
-    border-bottom: 2px solid black;
-    transition: border-bottom 0.3s ease-in-out;
-
-    &:focus,
-    &:hover,
-    &:focus-within {
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
-    }
-  }
-}
-
 //bio
 .contenido {
   position: relative;
@@ -134,14 +26,14 @@
     }
 
     a {
-      border-bottom: 2px solid transparent;
+      border-bottom: 4px solid transparent;
       transition: border-bottom 0.3s ease-in-out;
 
       &:focus-within,
       &:focus,
       &:hover,
       &:active {
-        border-bottom: 2px solid black;
+        border-bottom: 4px solid black;
       }
     }
   }
@@ -197,8 +89,8 @@
       columns: 1;
 
       @include media-breakpoint-up(lg) {
-        padding-left: 10% ;
-        padding-right:  10%;
+        padding-left: 10%;
+        padding-right: 10%;
       }
     }
 
@@ -208,6 +100,20 @@
 
       p {
         margin-bottom: 0;
+      }
+
+      a {
+        border-bottom: 3px solid black;
+        transition: border-bottom 0.3s ease-in-out;
+        text-decoration: none;
+        position: relative;
+
+        &:focus,
+        &:hover,
+        &:active,
+        &:focus-within {
+          border-bottom: 3px solid transparent;
+        }
       }
     }
   }
@@ -222,7 +128,7 @@
     height: 100%;
     position: fixed;
     padding-right: 10px;
-    line-height: 1.2  ;
+    line-height: 1.2;
   }
 }
 
@@ -271,11 +177,121 @@
 }
 
 .sub-ti {
-  font-size: 1.3rem;
-  margin-top: 1.3rem;
+  margin-bottom: 1.3rem;
 
   @include media-breakpoint-up(lg) {
-    padding-left: 10% ;
-    padding-right:  10%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+body.home {
+  .galeria {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      position: relative;
+      display: block;
+    }
+  }
+
+  .foto-home {
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: filter, opacity 0.6s ease-in-out;
+  }
+
+  .quote {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    width: 48%;
+
+    p {
+      font-size: 0.75rem;
+    }
+
+    blockquote p {
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+  }
+
+  .agenda {
+    position: relative;
+    margin-top: 100vh;
+
+    @include media-breakpoint-up(lg) {
+      padding-top: $spacer * 2;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-left: 1px solid black;
+      overflow: scroll;
+      height: 100%;
+      position: fixed;
+      margin-top: 0;
+    }
+  }
+
+  .item-agenda {
+    font-size: 1rem;
+    padding-bottom: 50px;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 1500px) {
+      line-height: 1.4;
+    }
+
+    .fecha {
+      // font-size: 1.3rem;
+      margin-bottom: 20px;
+
+      &::before {
+        content: "⚫";
+        font-size: 0.5rem;
+        display: inline;
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+    }
+
+    .tipo-evento {
+      padding-left: 22px;
+      margin-top: -5px;
+      position: relative;
+      display: block;
+
+      @include media-breakpoint-up(lg) {
+        padding-left: 17px;
+      }
+
+      @media (min-width: 1500px) {
+        padding-left: 22px;
+      }
+    }
+
+    a {
+      border-bottom: 2px solid black;
+      transition: border-bottom 0.3s ease-in-out;
+
+      &:focus,
+      &:hover,
+      &:focus-within {
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+      }
+    }
   }
 }

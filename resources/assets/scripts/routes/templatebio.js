@@ -2,6 +2,27 @@ export default {
   init() {
     $(document).ready(function () {
       $('div.links-destacados p a').wrap('<div class="arrow"></div>');
+
+      $('#galeria').lightGallery({
+        thumbnail: false,
+        //selector: '.',
+        width: '100%',
+        //nextHtml: 'NEXT',
+        //prevHtml: 'PREVIOUS',
+        zoom: false,
+        share: false,
+        download: true,
+        counter: false,
+        loop: false,
+        autoplayControls: false,
+        fullScreen: false,
+        hideBarsDelay: '1000000000',
+      });
+      $('.lightbox').click(function(event) {
+        event.preventDefault();
+        $('.slide-0').trigger('click');
+      })
+
     })
     /*Scroll Spy*/
     $('body').scrollspy({ target: '#index', offset: 150 });

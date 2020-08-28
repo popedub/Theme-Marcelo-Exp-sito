@@ -5,6 +5,7 @@ import 'imagesloaded/imagesloaded.pkgd';
 import 'bootstrap/js/src/util';
 import 'bigtext/dist/bigtext';
 import 'slick-carousel/slick/slick';
+import 'lightgallery/dist/js/lightgallery-all.js';
 
 // Import everything from autoload
 import './autoload/**/*'

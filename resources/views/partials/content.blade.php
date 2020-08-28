@@ -1,4 +1,4 @@
-<a href="{{ get_permalink() }}">
+<a href="{{ get_permalink() }}" class="article">
   <article @php (post_class()) @endphp>
 
     <header>
@@ -23,7 +23,7 @@
       echo $ini;
       }
       if($end) {
-      echo $end;
+      echo '-'.$end;
       }
       @endphp
     </div>
