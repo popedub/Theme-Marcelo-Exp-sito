@@ -297,3 +297,117 @@ body.home {
     }
   }
 }
+
+//ligthbox
+.lg-backdrop {
+  background-color: $blue;
+}
+
+.lg-img-wrap {
+  height: 80% !important;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.lg-actions .lg-next,
+.lg-actions .lg-prev {
+  background-color: transparent;
+}
+
+.lg-actions .lg-next::before {
+  content: url("./svg/close-left.svg");
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.lg-actions .lg-prev::after {
+  content: url("./svg/close-left.svg");
+  width: 30px;
+  height: 30px;
+  display: block;
+  transform: rotate(-180deg);
+}
+
+.lg-toolbar {
+  background-color: transparent !important;
+}
+
+.lg-toolbar .lg-icon {
+  color: white;
+}
+
+.lg-toolbar .lg-close,
+.lg-toolbar .lg-download {
+  padding-top: 30px;
+}
+
+html[lang="es"] {
+  .lg-toolbar .lg-close {
+    float: right;
+    width: 150px;
+  }
+
+  .lg-toolbar .lg-close::after {
+    content: "CERRAR";
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .lg-toolbar .lg-download {
+    float: left;
+    width: auto;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .lg-toolbar .lg-download::before {
+    content: "DESCARGAR";
+    font-family: Helvetica, Arial, sans-serif;
+    padding-top: 25px;
+  }
+
+  .lg-toolbar .lg-download::after {
+    content: url("./svg/download.svg");
+    transform: rotate(90deg);
+    width: 45px;
+    height: 25px;
+    display: inline-block;
+    margin-left: 15px;
+    margin-top: 25px;
+  }
+}
+
+html[lang="en"] {
+  .lg-toolbar .lg-close {
+    float: right;
+    width: 150px;
+  }
+
+  .lg-toolbar .lg-close::after {
+    content: "CLOSE";
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .lg-toolbar .lg-download::before {
+    content: "DOWNLOAD";
+    font-family: Helvetica, Arial, sans-serif;
+    padding-top: 25px;
+  }
+
+  .lg-toolbar .lg-download::after {
+    content: url("./svg/download.svg");
+    transform: rotate(90deg);
+    width: 45px;
+    height: 25px;
+    display: inline-block;
+    margin-left: 15px;
+    margin-top: 25px;
+  }
+}
+
+.lg-sub-html {
+  background-color: transparent;
+  color: white;
+  padding: 10px 40px 50px 40px;
+}

@@ -51,19 +51,20 @@
           <a href="{{ $item->enlace }}" target="_blank">{{ $item->nombre }}</a><br>
           @endforeach
           <a href="" class="lightbox">
-            <?php $texto_galeria = get_field('texto', 400) ?>
+            <?php $texto_galeria = get_field('texto', 282) //400 en dev?>
             @if ($texto_galeria)
               {{ $texto_galeria  }}
             @else
             <?php echo __('Descargar fotos personales', 'thememexposito'); ?>
             @endif
           </a>
-          <?php $galeria = get_field('galeria', 400)?>
+          <?php $galeria = get_field('galeria', 282) //400 en dev?>
           @if ($galeria)
           <div id="galeria" class="d-none">
             @foreach ($galeria as $foto)
             <a href="{{ $foto['url'] }}" class="slide-{{ $loop->index }}">
-              <img src="{{ $foto['url'] }}" alt="{{ $foto['alt'] }}">
+              <img src="{{ $foto['url'] }}" alt="{{ $foto['caption'] }}">
+
             </a>
             @endforeach
           </div>
