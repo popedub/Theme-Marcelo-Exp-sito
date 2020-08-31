@@ -4,8 +4,14 @@
     @if ($subtitulo)
     <h2 class="subtitle text-uppercase">{{ $subtitulo }}</h2>
     @endif
-    @if ($fecha_inicio || $fecha_final)
-    <div class="date">{{ $fecha_inicio }}{{ $fecha_final }}</div>
+    @if ($fecha_inicio)
+    <div class="date<?php if($fecha_final) echo ' date-end';?>">
+      {{ $fecha_inicio }}
+      @if ($fecha_final)
+      -{{ $fecha_final }}
+      @endif
+
+    </div>
     @endif
 
   </header>

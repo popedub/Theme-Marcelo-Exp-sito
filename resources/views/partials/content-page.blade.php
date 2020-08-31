@@ -50,7 +50,14 @@
           @foreach ($dossiers as $item)
           <a href="{{ $item->enlace }}" target="_blank">{{ $item->nombre }}</a><br>
           @endforeach
-          <a href="" class="lightbox"><?php echo __('Descargar fotos personales', 'thememexposito'); ?></a>
+          <a href="" class="lightbox">
+            <?php $texto_galeria = get_field('texto', 400) ?>
+            @if ($texto_galeria)
+              {{ $texto_galeria  }}
+            @else
+            <?php echo __('Descargar fotos personales', 'thememexposito'); ?>
+            @endif
+          </a>
           <?php $galeria = get_field('galeria', 400)?>
           @if ($galeria)
           <div id="galeria" class="d-none">
@@ -81,7 +88,7 @@
     @forelse ($biografia as $item)
     <section id="secction{{ $loop->index }}" class="mb-5">
       <h3 class="text-center mb-0">{!! $item->texto_menu !!}</h3>
-      <div class="sub-ti mb-5 text-center">{!! $item->titular_contenido!!}</div>
+      <div class="sub-ti text-center">{!! $item->titular_contenido!!}</div>
       <div class="info txt-col-{{ $item->columnas }}">
         {!! $item->contenido_seccion !!}
 

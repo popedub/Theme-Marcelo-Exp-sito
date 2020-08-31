@@ -241,10 +241,14 @@ body.single {
 
       .date {
         position: absolute;
-        left: -12px; //la altura del elemento dividida 2
+        left: 0; //la altura del elemento dividida 2
         top: calc(50% - 24px); //menos la altura del elemento
         transform: translate(0, -50%);
         transform: rotate(-90deg);
+      }
+
+      .date.date-end {
+        left: -24px !important;
       }
     }
 
@@ -347,8 +351,8 @@ body.single {
   }
 
   h3 {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
     font-size: 1.2rem;
     font-weight: 200;
   }
@@ -369,6 +373,10 @@ body.single {
   @include media-breakpoint-up(lg) {
     padding: 50px 5%;
   }
+}
+
+.item-sidebar {
+  margin-bottom: 6rem;
 }
 
 .overlay-sidebar.show-sidebar {
