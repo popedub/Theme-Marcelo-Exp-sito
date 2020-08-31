@@ -6,3 +6,4 @@
     @php the_excerpt() @endphp
   </div>
 </article>
+<div class="linea"></div>

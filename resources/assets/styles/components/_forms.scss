@@ -19,6 +19,7 @@
 input.search-form {
   @include media-breakpoint-up(md) {
     font-size: 5vw;
+    margin-right: -10px;
   }
 }
 
@@ -61,12 +62,9 @@ input.search-form {
     background-color: $blue;
     border: none;
     border-radius: 0;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s ease-in-out;
 
     &:focus {
       box-shadow: none;
-      border-bottom: 2px solid black;
 
       &::placeholder {
         opacity: 0;

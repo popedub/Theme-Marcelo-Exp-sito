@@ -51,14 +51,14 @@
           <a href="{{ $item->enlace }}" target="_blank">{{ $item->nombre }}</a><br>
           @endforeach
           <a href="" class="lightbox">
-            <?php $texto_galeria = get_field('texto', 282) //400 en dev?>
+            <?php $texto_galeria = get_field('texto', 400) //400 en swerv dev, 282 en local?>
             @if ($texto_galeria)
               {{ $texto_galeria  }}
             @else
             <?php echo __('Descargar fotos personales', 'thememexposito'); ?>
             @endif
           </a>
-          <?php $galeria = get_field('galeria', 282) //400 en dev?>
+          <?php $galeria = get_field('galeria', 400) //400 en swerv dev, 282 en local?>
           @if ($galeria)
           <div id="galeria" class="d-none">
             @foreach ($galeria as $foto)

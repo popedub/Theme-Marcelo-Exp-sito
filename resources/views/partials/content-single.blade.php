@@ -29,11 +29,15 @@
     <div class="footer-content">
 
       <a href="<?php echo get_permalink(92) ?>" class="back">
-        <p>
-          @php echo __('Volver a contenidos', 'thememexposito') @endphp
-        </p>
+        <div class="arrow">
+          <p>
+            @php echo __('Volver a contenidos', 'thememexposito') @endphp
+          </p>
 
+
+        </div>
       </a>
+
 
       <div class="footer">
         <div class="row">
@@ -70,7 +74,7 @@
         @if ($loop->first)
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h2>@php echo __('AUDIO', 'thememexposito') @endphp</h2>
-          @svg('close-left', 'arrow-left')
+
         </div>
         @endif
         <h3>{{ $item->titulo }}</h3>
@@ -93,7 +97,7 @@
         @if ($loop->first)
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h2>@php echo __('VÍDEO', 'thememexposito') @endphp</h2>
-          @svg('close-left', 'arrow-left')
+
         </div>
         @endif
         <h3>{{ $item->titulo  }}</h3>
@@ -114,7 +118,7 @@
       <div class="galeria-single">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h2>@php echo __('IMÁGENES', 'thememexposito') @endphp</h2>
-          @svg('close-left', 'arrow-left')
+
         </div>
 
         @foreach ($galeria as $foto)
@@ -173,4 +177,5 @@
 
 
 </article>
+@svg('close-left', 'arrow-left d-none')
 @svg('close-left','back-top')

@@ -29,12 +29,17 @@
     @extend .nav-link;
 
     padding: 0;
+    border-bottom: 3px solid transparent;
+    display: inline-block;
+    line-height: 0.9em;
+    transition: border-bottom 0.3s ease-in-out;
 
     &:hover,
     &:focus,
     &:active,
     &:focus-within {
       text-decoration: none !important;
+      border-bottom: 3px solid black;
     }
   }
 }
@@ -225,7 +230,7 @@ body.home {
     }
 
     @media (min-width: 1500px) {
-      margin-top: 40px;
+      margin-top: 23px;
     }
   }
 
@@ -235,13 +240,14 @@ body.home {
     margin-bottom: 2px;
     border-bottom: 2px solid transparent;
     transition: border-bottom 0.3s ease-in-out;
+    color: #212529;
 
     &:hover,
     &:focus,
     &:active,
     &:focus-within {
       text-decoration: none !important;
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid #212529;
     }
   }
 

@@ -90,8 +90,8 @@
       columns: 1;
 
       @include media-breakpoint-up(lg) {
-        padding-left: 10%;
-        padding-right: 10%;
+        padding-left: 0;
+        padding-right: 0;
       }
     }
 
@@ -139,6 +139,8 @@
   padding: 0;
   display: flex;
   margin-bottom: 1px;
+  font-size: 0.8rem;
+  line-height: 1.5;
   transition: color 0.4s ease-in-out;
 
   @include media-breakpoint-up(lg) {
@@ -208,7 +210,8 @@ body.home {
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: filter, opacity 0.6s ease-in-out;
+    filter: blur(0);
+    transition: filter 0.8s ease-in-out, opacity 0.8s ease-in-out;
   }
 
   .quote {
@@ -230,9 +233,10 @@ body.home {
   .agenda {
     position: relative;
     margin-top: 100vh;
+    padding-top: 0px;
 
     @include media-breakpoint-up(lg) {
-      padding-top: $spacer * 2;
+      padding-top: 15px;
       padding-left: 15px;
       padding-right: 15px;
       border-left: 1px solid black;
@@ -240,6 +244,10 @@ body.home {
       height: 100%;
       position: fixed;
       margin-top: 0;
+    }
+
+    @media (min-width: 1500px) {
+      padding-top: 30px;
     }
   }
 
@@ -393,16 +401,6 @@ html[lang="en"] {
     content: "DOWNLOAD";
     font-family: Helvetica, Arial, sans-serif;
     padding-top: 25px;
-  }
-
-  .lg-toolbar .lg-download::after {
-    content: url("./svg/download.svg");
-    transform: rotate(90deg);
-    width: 45px;
-    height: 25px;
-    display: inline-block;
-    margin-left: 15px;
-    margin-top: 25px;
   }
 }
 
