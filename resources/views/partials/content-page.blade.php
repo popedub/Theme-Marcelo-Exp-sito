@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12 col-lg-10 contenido">
-    <div class="row enlaces-bio d-none d-lg-block">
+    <div class="row enlaces-bio d-none d-lg-flex">
       <div class="col-12 col-lg-6">
         @if ($email)
         <div class="mail">
