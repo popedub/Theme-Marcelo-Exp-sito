@@ -61,14 +61,17 @@ body.blog {
     @extend .col-lg-4;
 
     position: relative;
-    height: 350px;
+    min-height: 300px;
+    border-bottom: 1px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
     @include media-breakpoint-up(lg) {
       padding-top: 15px;
+      padding-bottom: 0;
       height: 450px;
       height: 35vw;
       overflow: hidden;
-      border-bottom: 1px solid black;
       border-right: 1px solid black;
 
       &:nth-child(3n + 1) {
@@ -91,8 +94,10 @@ body.blog {
     &:hover,
     &:focus,
     &:focus-within {
-      transform: scale(1.91);
-      transform-origin: bottom left;
+      @include media-breakpoint-up(lg) {
+        transform: scale(1.91);
+        transform-origin: bottom left;
+      }
 
       @media (min-width: 1500px) {
         transform: scale(1.94);
@@ -115,16 +120,32 @@ body.blog {
   .date {
     position: absolute;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 20px;
     transform: rotate(90deg);
+
+    @include media-breakpoint-up(lg) {
+      height: 100px;
+      top: calc(50% - 50px);
+      bottom: 0;
+      right: 90px;
+      transform: rotate(90deg) translateY(-50%);
+    }
   }
 
   .date.large {
     right: -22px;
+    bottom: 30px;
+    transform: translateY(-50%) rotate(90deg);
+
+    @include media-breakpoint-up(lg) {
+      top: 50%;
+      bottom: 0;
+      right: 10px;
+    }
 
     @media (min-width: 1500px) {
-      right: -30px;
+      right: 0;
+      bottom: 0;
     }
   }
 }
@@ -206,18 +227,19 @@ body.single {
       @extend .col-12;
 
       text-align: center;
-      height: 400px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       margin-top: 50px; //altura del header.banner
-      padding-top: 15px;
       padding-bottom: 30px;
       padding-left: 5%;
       padding-right: 5%;
 
       @include media-breakpoint-up(lg) {
         position: fixed;
+        height: 400px;
+        justify-content: space-between;
+        padding-top: 15px;
         padding-left: 10%;
         padding-right: 10%;
       }
@@ -228,10 +250,15 @@ body.single {
       }
 
       h1 {
-        font-size: 8vw;
+        font-size: 3rem;
         line-height: 1;
         text-transform: uppercase;
-        padding: 30px 0;
+        padding: 0 0 100px 0;
+
+        @include media-breakpoint-up(lg) {
+          font-size: 8vw;
+          padding: 30px 0;
+        }
 
         @include media-breakpoint-up(xl) {
           font-size: 6rem;
@@ -241,19 +268,26 @@ body.single {
       h2 {
         font-size: 1.2rem;
         font-weight: 400;
-        margin-bottom: 0;
+        margin-bottom: 1rem;
+
+        @include media-breakpoint-up(lg) {
+          margin-bottom: 0;
+        }
       }
 
       .date {
-        position: absolute;
-        left: 0; //la altura del elemento dividida 2
-        top: calc(50% - 24px); //menos la altura del elemento
-        transform: translate(0, -50%);
-        transform: rotate(-90deg);
+        @include media-breakpoint-up(lg) {
+          position: absolute;
+          left: 0; //la altura del elemento dividida 2
+          top: calc(50% - 24px); //menos la altura del elemento
+          transform: translate(0, -50%) rotate(-90deg);
+        }
       }
 
       .date.date-end {
-        left: -24px !important;
+        @include media-breakpoint-up(lg) {
+          left: -24px !important;
+        }
       }
     }
 
@@ -264,7 +298,10 @@ body.single {
 
       padding-top: 30px;
       background-color: white;
-      border-top: 1px solid black;
+
+      @include media-breakpoint-up(lg) {
+        border-top: 1px solid black;
+      }
 
       a {
         border-bottom: 2px solid black;
@@ -281,7 +318,9 @@ body.single {
     }
 
     .entry-content {
-      border-right: 1px solid black;
+      @include media-breakpoint-up(lg) {
+        border-right: 1px solid black;
+      }
     }
 
     .content-sidebar {
@@ -310,10 +349,14 @@ body.single {
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 50%;
+  width: 100%;
   height: 50px;
   z-index: 2;
   background-color: white;
+
+  @include media-breakpoint-up(lg) {
+    width: 50%;
+  }
 
   button {
     border-radius: 0;
@@ -336,7 +379,7 @@ body.single {
 }
 
 .overlay-sidebar {
-  width: 50%;
+  width: 100%;
   height: calc(100% - 74px); // la altura de los botones + el header.banner
   padding: 15px;
   transform: translateX(100%);
@@ -349,6 +392,10 @@ body.single {
   overflow: scroll;
   transition: 0.4s ease-in-out;
   border-left: 1px solid black;
+
+  @include media-breakpoint-up(lg) {
+    width: 50%;
+  }
 
   h2 {
     line-height: 1;
@@ -404,13 +451,20 @@ body.single {
 }
 
 .arrow-left {
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   cursor: pointer;
   position: fixed;
-  right: 30px;
-  top: 115px;
+  right: 20px;
+  top: 45px;
   z-index: 3;
+
+  @include media-breakpoint-up(lg) {
+    width: 45px;
+    height: 45px;
+    top: 115px;
+    right: 30px;
+  }
 }
 
 .footer-content {
@@ -457,7 +511,7 @@ body.single {
   width: 45px;
   height: 45px;
   position: fixed;
-  left: 45%;
+  left: 15px;
   bottom: 100px;
   transform: rotate(-90deg);
   cursor: pointer;
@@ -467,6 +521,10 @@ body.single {
     fill: black;
     stroke: black;
   }
+
+ @include media-breakpoint-up(lg) {
+   left: 45%;
+ }
 }
 
 //search

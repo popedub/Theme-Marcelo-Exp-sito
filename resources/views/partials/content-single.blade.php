@@ -12,6 +12,15 @@
       @endif
 
     </div>
+    @if (has_post_thumbnail())
+        <figure class="figure mr-auto ml-auto d-block d-lg-none mt-4">
+          {{ the_post_thumbnail('full', ['class' => 'figure-img img-fluid']) }}
+
+        </figure>
+
+
+
+        @endif
     @endif
 
   </header>
@@ -28,7 +37,7 @@
     @php the_content() @endphp
     <div class="footer-content">
 
-      <a href="<?php echo get_permalink(92) ?>" class="back">
+      <a href="<?php echo get_permalink(92) ?>" class="back d-none d-lg-block">
         <div class="arrow">
           <p>
             @php echo __('Volver a contenidos', 'thememexposito') @endphp
@@ -59,7 +68,7 @@
 
     @include('partials/form-filter')
     @if (has_post_thumbnail())
-    <figure class="figure mr-auto ml-auto">
+    <figure class="figure mr-auto ml-auto d-none d-lg-block">
       {{ the_post_thumbnail('full', ['class' => 'figure-img img-fluid']) }}
 
     </figure>

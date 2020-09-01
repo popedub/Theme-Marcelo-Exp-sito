@@ -6,11 +6,11 @@
     @include('partials.header')
     <div class="wrap container-fluid" role="document">
       <div class="content">
-        <main class="main order-2 order-lg-1">
+        <main class="main">
           @yield('content')
         </main>
         @if (App\display_sidebar())
-          <aside class="sidebar order-1 order-lg-2">
+          <aside class="sidebar d-none d-lg-block">
            <div class="filtro">
               @include('partials.filtro')
             </div>

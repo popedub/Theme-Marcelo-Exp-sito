@@ -3,14 +3,14 @@ var accents = require('remove-accents');
 export default {
   init() {
     // JavaScript to be fired on the home page
-    $(document).ready(function(){
-      $('.btn-link').each(function(){
+    $(document).ready(function () {
+      $('.btn-link').each(function () {
         if ($(this).data('filter') === localStorage.getItem('itemFiltro')) {
           $(this).addClass('active')
         }
 
       })
-      if (localStorage.getItem('itemTitular')){
+      if (localStorage.getItem('itemTitular')) {
         var clase = localStorage.getItem('itemTitular')
         clase = accents.remove(clase).toLowerCase();
         $('.titular h2').remove();
@@ -55,10 +55,10 @@ export default {
         localStorage.clear();
       });
 
-      var borderItems = function(articles){
+      var borderItems = function (articles) {
         //remove border bottom from las 3 items
 
-          let items = articles;
+        let items = articles;
 
         //SI ES MÓDULO DE 3
 
@@ -71,7 +71,7 @@ export default {
 
           }
           //si sólo hay 3
-          if(items.length == 3) {
+          if (items.length == 3) {
             for (let i = 0; i < items.length; i++) {
 
 
@@ -88,9 +88,9 @@ export default {
               if (itemBorder[i].classList.contains('no-border-bottom')) {
                 itemBorder[i].classList.remove('no-border-bottom');
               }
+            }
           }
-        }
-        //SI ES MODULO 2
+          //SI ES MODULO 2
         } else if (items.length % 3 == 2) {
 
           let ultimos = items.slice(Math.max(items.length - 2, 1))
@@ -101,7 +101,7 @@ export default {
 
           }
           //si sólo hay 2
-          if(items.length == 2) {
+          if (items.length == 2) {
             for (let i = 0; i < items.length; i++) {
 
 
@@ -120,7 +120,7 @@ export default {
               }
             }
           } // si es modulo 1 o sólo hay uno o módulo 1 y hay más de 3
-        } else if(items.length % 3 == 1 || items.length == 1 || items.length > 3) {
+        } else if (items.length % 3 == 1 || items.length == 1 || items.length > 3) {
 
           let ultimos = items.slice(Math.max(items.length - 1, 1))
           for (let i = 0; i < ultimos.length; i++) {
@@ -131,7 +131,7 @@ export default {
           }
           if (items.length == 1) {
 
-              items[0].className += ' no-border-bottom';
+            items[0].className += ' no-border-bottom';
           }
           //para remover el estilo del border
           if (items.length > 3) {
@@ -187,60 +187,60 @@ export default {
       }
       //cambiamos el titular de la página de filtros
 
-        $('.texto-titular').on('click', 'a', function () {
-          // get text from buttom
+      $('.texto-titular').on('click', 'a', function () {
+        // get text from buttom
 
-          var $titular = $(this).text();
-          var $old_titular = $('.titular h2').text();
+        var $titular = $(this).text();
+        var $old_titular = $('.titular h2').text();
 
-          $old_titular = accents.remove($old_titular).toLowerCase();
-          //para mostrar las descriptiones de las categorias
-          $titular = accents.remove($titular).toLowerCase();
-          var clase = $titular;
-          clase = clase.replace(/\s+/g, '-');
+        $old_titular = accents.remove($old_titular).toLowerCase();
+        //para mostrar las descriptiones de las categorias
+        $titular = accents.remove($titular).toLowerCase();
+        var clase = $titular;
+        clase = clase.replace(/\s+/g, '-');
 
 
-          if ($titular != $old_titular) {
-            $('.titular h2').remove();
-            $('.titular').append('<h2>' + $(this).text() + '</h2>');
+        if ($titular != $old_titular) {
+          $('.titular h2').remove();
+          $('.titular').append('<h2>' + $(this).text() + '</h2>');
+          $('.descripcion-contenidos').addClass('d-none');
+          $('.descripcion').addClass('d-none');
+          $('.descripcion' + '.' + clase).toggleClass('d-none');
+
+          if ($('.descripcion').hasClass(clase)) {
             $('.descripcion-contenidos').addClass('d-none');
             $('.descripcion').addClass('d-none');
             $('.descripcion' + '.' + clase).toggleClass('d-none');
+          }
 
-            if ($('.descripcion').hasClass(clase)) {
-              $('.descripcion-contenidos').addClass('d-none');
-              $('.descripcion').addClass('d-none');
-              $('.descripcion' + '.' + clase).toggleClass('d-none');
+
+        } else if ($titular === $old_titular) {
+          console.log('mismo texto')
+          $('.titular h2').toggleClass('invisible');
+
+          $('.descripcion').each(function () {
+            if (!$(this).hasClass(clase)) {
+
+              $(this).addClass('d-none')
             }
 
+          })
 
-          } else if ($titular === $old_titular) {
-            console.log('mismo texto')
-            $('.titular h2').toggleClass('invisible');
+          $('.descripcion' + '.' + clase).toggleClass('d-none');
+          $('.descripcion-contenidos').toggleClass('d-none');
 
-            $('.descripcion').each(function () {
-              if (!$(this).hasClass(clase)) {
+          if (!$('.descripcion' + '.' + clase).hasClass('d-none')) {
+            $('.descripcion-contenidos').addClass('d-none')
 
-                $(this).addClass('d-none')
-              }
-
-            })
-
-            $('.descripcion' + '.' + clase).toggleClass('d-none');
-            $('.descripcion-contenidos').toggleClass('d-none');
-
-            if (!$('.descripcion' + '.' + clase).hasClass('d-none')) {
-              $('.descripcion-contenidos').addClass('d-none')
-
-
-            }
 
           }
 
-        });
+        }
+
+      });
 
 
-       $('.texto-header').on('click', 'a', function () {
+      $('.texto-header').on('click', 'a', function () {
         // get text form buttom
 
         var $titular = $(this).text();
@@ -273,30 +273,70 @@ export default {
 
       });
 
+
       //cuándo isotope ha renderizado los elementos, check el border-right
       $grid.on('layoutComplete',
         // eslint-disable-next-line no-unused-vars
         function (event) {
-          var elems = $grid.isotope('getFilteredItemElements')
-          //queda mirar los breakpoints
-          var count = 1;
-          $.each(elems, function () {
+          var w = $(window).width()
+          if (w > 768) {
 
 
-            if (count == 1 || count == 2) {
-              $(this).css('border-right', '1px solid black')
-            }
-            if (count === 3) {
-              $(this).css('border-right', 'none')
-              count = 0;
-            }
-            count++;
-          })
-          //llamo a la funcion para remover el border-bottom de los últimos items
-          borderItems(elems)
+            var elems = $grid.isotope('getFilteredItemElements')
+            //queda mirar los breakpoints
+            var count = 1;
+            $.each(elems, function () {
+
+
+              if (count == 1 || count == 2) {
+                $(this).css('border-right', '1px solid black')
+              }
+              if (count === 3) {
+                $(this).css('border-right', 'none')
+                count = 0;
+              }
+              count++;
+            })
+            //llamo a la funcion para remover el border-bottom de los últimos items
+
+            borderItems(elems)
+
+          }
 
         }
       )
+      $(window).resize(function(){
+        $grid.on('layoutComplete',
+          // eslint-disable-next-line no-unused-vars
+          function (event) {
+            var w = $(window).width()
+            if (w > 768) {
+
+
+              var elems = $grid.isotope('getFilteredItemElements')
+              //queda mirar los breakpoints
+              var count = 1;
+              $.each(elems, function () {
+
+
+                if (count == 1 || count == 2) {
+                  $(this).css('border-right', '1px solid black')
+                }
+                if (count === 3) {
+                  $(this).css('border-right', 'none')
+                  count = 0;
+                }
+                count++;
+              })
+              //llamo a la funcion para remover el border-bottom de los últimos items
+
+              borderItems(elems)
+
+            }
+
+          }
+        )
+      })
 
     })
 

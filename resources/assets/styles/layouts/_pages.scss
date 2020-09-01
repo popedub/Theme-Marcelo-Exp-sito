@@ -16,24 +16,33 @@
   }
 
   .enlaces-bio {
-    font-size: 1.85rem;
+    font-size: 1.25rem;
     line-height: 1.3;
     margin-bottom: 50px;
     padding-top: 65px;
 
     @include media-breakpoint-up(lg) {
       line-height: 1.2;
+      font-size: 1.85rem;
     }
 
     a {
-      border-bottom: 4px solid transparent;
+      border-bottom: 2px solid transparent;
       transition: border-bottom 0.3s ease-in-out;
 
       &:focus-within,
       &:focus,
       &:hover,
       &:active {
-        border-bottom: 4px solid black;
+        border-bottom: 2px solid black;
+
+        @include media-breakpoint-up(lg) {
+          border-bottom: 4px solid black;
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        border-bottom: 4px solid transparent;
       }
     }
   }
@@ -192,26 +201,32 @@
 body.home {
   .galeria {
     width: 100%;
-    height: 100vh;
+    height: 60vh;
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
-    display: none;
+    border-bottom: 1px solid black;
 
     @include media-breakpoint-up(lg) {
       position: relative;
       display: block;
+      height: 100vh;
+      border-bottom: none;
     }
   }
 
   .foto-home {
     width: 100%;
-    height: 100vh;
+    height: calc(60vh - 1px);
     background-repeat: no-repeat;
     background-size: cover;
     filter: blur(0);
     transition: filter 0.8s ease-in-out, opacity 0.8s ease-in-out;
+
+    @include media-breakpoint-up(lg) {
+      height: 100vh;
+    }
   }
 
   .quote {
@@ -219,6 +234,11 @@ body.home {
     bottom: 0;
     left: 15px;
     width: 48%;
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
 
     p {
       font-size: 0.75rem;
@@ -232,7 +252,7 @@ body.home {
 
   .agenda {
     position: relative;
-    margin-top: 100vh;
+    margin-top: 60vh;
     padding-top: 0px;
 
     @include media-breakpoint-up(lg) {

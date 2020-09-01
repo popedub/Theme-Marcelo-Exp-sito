@@ -22,16 +22,6 @@ body.home {
   @include media-breakpoint-up(lg) {
     overflow: hidden;
   }
-
-  .wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    @include media-breakpoint-up(lg) {
-      position: relative;
-    }
-  }
 }
 
 body.search {

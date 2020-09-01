@@ -1,6 +1,6 @@
 <header class="banner">
   @if (is_front_page())
-  <div class="container-fluid">
+  <div class="container-fluid d-none d-lg-block">
 
     <div class="row">
       <div class="col-12 col-lg-6 header-right">
@@ -16,6 +16,12 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="container-fluid d-flex justify-content-between align-items-center d-block d-lg-none" style="height: 100%">
+    <a class="brand" href="{{ home_url('/') }}">{{ get_bloginfo('name', 'display') }}</a>
+    @include('partials.page-header')
+    <a id="menu" class="btn-menu">@php echo __('Menu', 'thememexposito')@endphp</a>
   </div>
   @else
   <div class="container-fluid d-flex justify-content-between align-items-center">

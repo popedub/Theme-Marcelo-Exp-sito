@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="col-12 intro">
+<div class="col-12 intro d-none d-lg-block">
   <div class="titular">
     <h2 class="invisible">START</h2>
   </div>
