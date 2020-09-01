@@ -409,7 +409,7 @@ body.single {
   cursor: pointer;
   position: fixed;
   right: 30px;
-  top: 75px;
+  top: 115px;
   z-index: 3;
 }
 
@@ -424,7 +424,6 @@ body.single {
 .back {
   width: 100%;
   height: 60px;
-  border-top: 1px solid black;
   padding-left: 15px;
   display: flex;
   align-content: center;
@@ -436,7 +435,7 @@ body.single {
 
   p {
     margin-bottom: 0;
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid black;
     transition: border-bottom 0.3s ease-in-out;
     line-height: 1;
     display: inline-block;
@@ -446,10 +445,10 @@ body.single {
   &:focus,
   &:hover,
   &:focus-within {
-    border-bottom: none !important;
+    border-bottom: 2px solid transparent;
 
     p {
-      border-bottom: 3px solid  black;
+      border-bottom: 2px solid transparent;
     }
   }
 }

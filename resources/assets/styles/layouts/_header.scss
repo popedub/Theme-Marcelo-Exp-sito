@@ -74,16 +74,6 @@
   right: 0;
 }
 
-/* Safari 10.1+ (alternate method) */
-
-@media not all and (min-resolution: 0.001dpcm) {
-  @supports (-webkit-appearance: none) {
-    .search-menu {
-      right: -30px;
-    }
-  }
-}
-
 .languages {
   @include media-breakpoint-up(lg) {
     padding-top: 50vh;

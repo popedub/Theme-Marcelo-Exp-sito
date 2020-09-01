@@ -19,7 +19,6 @@
 input.search-form {
   @include media-breakpoint-up(md) {
     font-size: 5vw;
-    margin-right: -10px;
   }
 }
 
@@ -32,6 +31,9 @@ input.search-form {
   font-size: 6vw;
   max-width: 100%;
   color: black;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
 
   @include media-breakpoint-up(md) {
     font-size: 5vw;
@@ -78,6 +80,16 @@ input.search-form {
       padding: 0;
       width: 90%;
       height: auto;
+    }
+  }
+}
+
+/* Safari 10.1+ (alternate method) */
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .search-menu {
+      right: -20px;
     }
   }
 }

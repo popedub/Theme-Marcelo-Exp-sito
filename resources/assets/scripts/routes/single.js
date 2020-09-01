@@ -103,6 +103,7 @@ export default {
     })
 
     $('.arrow-left').click(function(){
+      $(this).toggleClass('d-none')
       $('.overlay-sidebar').removeClass('show-sidebar');
       $('.buttons-group-fixed button').removeClass('active');
       $('.entry-content').css('border-right', '1px solid black');

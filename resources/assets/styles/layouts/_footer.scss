@@ -14,3 +14,9 @@
     height: 400px;
   }
 }
+
+body.single {
+  .footer {
+    border-top: none;
+  }
+}
