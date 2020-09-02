@@ -23,15 +23,22 @@ export default {
       $('.preload').css('opacity', '1');
 
       setTimeout(function () {
-        $('.preload').css('opacity', '0');
-        $('.preload').css('display', 'none');
-        $('body').addClass('blur');
+        $('.content_preload').css('opacity', '1');
 
-      }, 2000);
+
+      }, 1000);
+      setTimeout(function () {
+        $('.content_preload').css('opacity', '0');
+
+
+      }, 3000);
 
       setTimeout(function () {
-        $('body').removeClass('blur');
-      }, 4000)
+
+        $('.preload').css('opacity', '0');
+        $('.preload').css('display', 'none');
+
+      }, 5000);
     })
   },
   finalize() {

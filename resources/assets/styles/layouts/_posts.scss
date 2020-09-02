@@ -201,11 +201,17 @@ body.blog {
 }
 
 .col-12.m {
-  position: absolute;
-  bottom: 50px;
+  position: relative;
+  margin-top: 30px;
   left: 0;
   font-size: 2rem;
   line-height: 0.9;
+
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    bottom: 50px;
+    margin-top: 0;
+  }
 
   @include media-breakpoint-up(xl) {
     font-size: 3rem;
@@ -250,10 +256,10 @@ body.single {
       }
 
       h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         line-height: 1;
         text-transform: uppercase;
-        padding: 0 0 100px 0;
+        padding: 15px 0 100px 0;
 
         @include media-breakpoint-up(lg) {
           font-size: 8vw;
@@ -380,7 +386,7 @@ body.single {
 
 .overlay-sidebar {
   width: 100%;
-  height: calc(100% - 74px); // la altura de los botones + el header.banner
+  height: calc(100% - 90px); // la altura de los botones + el header.banner
   padding: 15px;
   transform: translateX(100%);
   background-color: $blue;
@@ -456,7 +462,7 @@ body.single {
   cursor: pointer;
   position: fixed;
   right: 20px;
-  top: 45px;
+  top: 60px;
   z-index: 3;
 
   @include media-breakpoint-up(lg) {
