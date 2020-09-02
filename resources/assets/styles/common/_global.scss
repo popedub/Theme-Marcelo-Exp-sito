@@ -89,3 +89,31 @@ h6 {
     display: block;
   }
 }
+
+.preload {
+  background: white;
+  position: fixed;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  display: block;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.content_preload {
+  width: 90%;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 6rem;
+  font-family: "Everett", Helvetica, Arial, sans-serif;
+}
+
+.blur {
+  filter: blur(2px);
+}

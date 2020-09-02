@@ -9,15 +9,30 @@ export default {
       $(document).ready(function () {
         btn.addEventListener('click', function () {
           $('.overlay-slidedown').toggleClass('open');
-          $('body').css('overflow', 'hidden');
+          $('html, body').css('overflow', 'hidden');
         })
 
         close.addEventListener('click', function () {
           $('.overlay-slidedown').toggleClass('open');
-          $('body').css('overflow', 'auto');
+          $('html, body').css('overflow', 'auto');
         })
       });
     }
+    $(document).ready(function () {
+      $('.preload').css('display', 'block');
+      $('.preload').css('opacity', '1');
+
+      setTimeout(function () {
+        $('.preload').css('opacity', '0');
+        $('.preload').css('display', 'none');
+        $('body').addClass('blur');
+
+      }, 2000);
+
+      setTimeout(function () {
+        $('body').removeClass('blur');
+      }, 4000)
+    })
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
