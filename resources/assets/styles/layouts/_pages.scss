@@ -340,6 +340,11 @@ body.home {
 .lg-actions .lg-next,
 .lg-actions .lg-prev {
   background-color: transparent;
+  display: none;
+
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
 }
 
 .lg-actions .lg-next::before {
@@ -373,7 +378,13 @@ body.home {
 html[lang="es"] {
   .lg-toolbar .lg-close {
     float: right;
-    width: 150px;
+    width: auto;
+    padding-right: 15px;
+
+    @include media-breakpoint-up(lg) {
+      width: 150px;
+      padding-right: 0;
+    }
   }
 
   .lg-toolbar .lg-close::after {
@@ -386,7 +397,11 @@ html[lang="es"] {
     width: auto;
     display: flex;
     align-items: center;
-    padding-left: 30px;
+    padding-left: 15px;
+
+    @include media-breakpoint-up(lg) {
+      padding-left: 30px;
+    }
   }
 
   .lg-toolbar .lg-download::before {
@@ -396,20 +411,22 @@ html[lang="es"] {
   }
 
   .lg-toolbar .lg-download::after {
-    content: url("./svg/download.svg");
-    transform: rotate(90deg);
-    width: 45px;
-    height: 25px;
+    content:"";
     display: inline-block;
     margin-left: 15px;
-    margin-top: 25px;
   }
 }
 
 html[lang="en"] {
   .lg-toolbar .lg-close {
     float: right;
-    width: 150px;
+    width: auto;
+    padding-right: 15px;
+
+    @include media-breakpoint-up(lg) {
+      width: 150px;
+      padding-right: 0;
+    }
   }
 
   .lg-toolbar .lg-close::after {

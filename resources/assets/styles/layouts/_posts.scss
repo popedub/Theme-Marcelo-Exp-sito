@@ -209,7 +209,7 @@ body.blog {
 
   @include media-breakpoint-up(lg) {
     position: absolute;
-    bottom: 50px;
+    bottom: 15px;
     margin-top: 0;
   }
 
@@ -228,7 +228,15 @@ body.single {
   article {
     @extend .row;
 
+    margin-left: 0;
+    margin-right: 0;
     background-color: white;
+
+    @include media-breakpoint-up(lg) {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+
     header {
       @extend .col-12;
 
@@ -238,8 +246,8 @@ body.single {
       justify-content: center;
       margin-top: 50px; //altura del header.banner
       padding-bottom: 30px;
-      padding-left: 5%;
-      padding-right: 5%;
+      padding-left: 0;
+      padding-right: 0;
 
       @include media-breakpoint-up(lg) {
         position: fixed;
@@ -263,7 +271,7 @@ body.single {
 
         @include media-breakpoint-up(lg) {
           font-size: 8vw;
-          padding: 30px 0;
+          padding: 0;
         }
 
         @include media-breakpoint-up(xl) {
@@ -303,9 +311,13 @@ body.single {
       @extend .col-lg-6;
 
       padding-top: 30px;
+      padding-left: 0;
+      padding-right: 0;
       background-color: white;
 
       @include media-breakpoint-up(lg) {
+        padding-left: 15px;
+        padding-right: 15px;
         border-top: 1px solid black;
       }
 
@@ -345,7 +357,7 @@ body.single {
       .figure-caption {
         color: white;
         font-size: 0.8rem;
-        font-weight: 200;
+        font-weight: 400;
       }
     }
   }
@@ -429,7 +441,7 @@ body.single {
 .overlay-sidebar.audio,
 .overlay-sidebar.imagenes {
   @include media-breakpoint-up(lg) {
-    padding: 75px 5%;
+    padding: 30px 5%;
   }
 }
 
@@ -468,7 +480,7 @@ body.single {
   @include media-breakpoint-up(lg) {
     width: 45px;
     height: 45px;
-    top: 115px;
+    top: 80px;
     right: 30px;
   }
 }
@@ -477,20 +489,32 @@ body.single {
   position: relative;
   height: auto;
   padding-top: 150px;
-  margin-left: -15px;
-  margin-right: -15px;
+
+  @include media-breakpoint-up(lg) {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 }
 
 .back {
   width: 100%;
   height: 60px;
-  padding-left: 15px;
+  padding-left: 35px;
   display: flex;
   align-content: center;
   border-bottom: none !important;
 
   .arrow {
     align-self: center;
+
+    &:before {
+      margin-right: 25px;
+      border-bottom: none;
+      transform: rotate(135deg);
+      position: absolute;
+      bottom: 27px;
+      left: 30px;
+    }
   }
 
   p {
@@ -546,6 +570,10 @@ body.search-results {
   article:not(:nth-child(1)) {
     padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+
+  .entry-summary {
+    padding-right: 20%;
   }
 
   .arrow {
