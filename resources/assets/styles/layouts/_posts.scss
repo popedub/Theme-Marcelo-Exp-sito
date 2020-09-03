@@ -1,16 +1,35 @@
 body.blog {
+  .wrap {
+    padding-left: 0;
+    padding-right: 0;
+
+    @include media-breakpoint-up(lg) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
   .content {
     @extend .row;
+
+    margin-left: 0;
+    margin-right: 0;
+
+    @include media-breakpoint-up(lg) {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
   }
 
   .main {
     @extend .col-12;
     @extend .col-lg-10;
 
+    padding-left: 0;
+    padding-right: 0;
+
     @include media-breakpoint-up(lg) {
       border-right: 1px solid black;
-      padding-left: 0;
-      padding-right: 0;
     }
   }
 
@@ -47,6 +66,7 @@ body.blog {
   .article {
     color: black;
     transition: color 0.3s ease-in-out;
+    width: 100%;
 
     &:active,
     &:focus,
@@ -62,13 +82,17 @@ body.blog {
 
     position: relative;
     min-height: 300px;
-    border-bottom: 1px solid black;
     padding-top: 20px;
     padding-bottom: 20px;
+    border-bottom: 1px solid black;
+    padding-left: 0;
+    padding-right: 0;
 
     @include media-breakpoint-up(lg) {
       padding-top: 15px;
       padding-bottom: 0;
+      padding-left: 15px;
+      padding-right: 15px;
       height: 450px;
       height: 35vw;
       overflow: hidden;
@@ -82,6 +106,11 @@ body.blog {
 
   h2 {
     font-size: 1.1rem;
+    padding-left: 15px;
+
+    @include media-breakpoint-up(lg) {
+      padding-left: 0;
+    }
   }
 
   .foto {
@@ -146,6 +175,18 @@ body.blog {
     @media (min-width: 1500px) {
       right: 0;
       bottom: 0;
+    }
+  }
+
+  .footer {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+
+      @include media-breakpoint-up(lg) {
+        margin-right: -15px;
+        margin-left: -15px;
+      }
     }
   }
 }
