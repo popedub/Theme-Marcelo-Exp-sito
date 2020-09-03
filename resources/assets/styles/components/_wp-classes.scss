@@ -54,3 +54,17 @@
   @extend .sr-only;
   @extend .sr-only-focusable;
 }
+
+.mce-content-body {
+  a {
+    border-bottom: 2px solid black;
+    transition: border-bottom 0.3s ease-in-out;
+
+    &:focus-within,
+    &:focus,
+    &:hover,
+    &:active {
+      border-bottom: 2px solid transparent;
+    }
+  }
+}

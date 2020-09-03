@@ -6,7 +6,7 @@
   @php do_action('get_header') @endphp
   <div class="preload" style="display: block">
     <div class="content_preload">
-      {{ __('MARCELO EXPÓSITO', 'thememexposito') }}
+      @include('partials.frases-loader')
     </div>
   </div>
   @include('partials.header')

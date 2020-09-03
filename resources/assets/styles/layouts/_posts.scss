@@ -428,7 +428,13 @@ body.single {
     &:focus-within {
       box-shadow: none;
       outline: none;
-      background-color: black;
+      background-color: transparent;
+      color: black;
+
+      @include media-breakpoint-up(lg) {
+        background-color: black;
+        color: white;
+      }
     }
   }
 
