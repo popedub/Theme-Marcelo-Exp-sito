@@ -37,7 +37,7 @@
         @if ($distribucion_de_video)
         <div class="video">
           @php
-          echo __('Distribución del vídeo:', 'thememexposito') . '<br>';
+          echo __('Distribución de vídeo:', 'thememexposito') . '<br>';
           @endphp
           @foreach ($distribucion_de_video as $item)
           <a href="{{ $item->enlace }}" target="_blank">{{ $item->nombre }}</a>

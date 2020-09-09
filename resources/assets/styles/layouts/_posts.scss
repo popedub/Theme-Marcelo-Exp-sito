@@ -559,8 +559,12 @@ body.single {
       border-bottom: none;
       transform: rotate(135deg);
       position: absolute;
-      bottom: 27px;
+      bottom: 34px;
       left: 30px;
+
+      @include media-breakpoint-up(xl) {
+        bottom: 27px;
+      }
     }
   }
 

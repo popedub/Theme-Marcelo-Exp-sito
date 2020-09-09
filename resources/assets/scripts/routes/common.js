@@ -26,19 +26,19 @@ export default {
         $('.content_preload').css('opacity', '1');
 
 
-      }, 1000);
+      }, 500);
       setTimeout(function () {
         $('.content_preload').css('opacity', '0');
 
 
-      }, 3000);
+      }, 1500);
 
       setTimeout(function () {
 
         $('.preload').css('opacity', '0');
         $('.preload').css('display', 'none');
 
-      }, 5000);
+      }, 2500);
     })
   },
   finalize() {
