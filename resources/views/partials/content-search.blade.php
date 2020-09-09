@@ -10,7 +10,7 @@
       <a href="{{ $enlace }}" target="_blank">{{ __('Agenda y noticias: ','thememexposito') }} {{ $evento }}</a>
 
       @else
-      <a href="{{ get_permalink() }}">{!! get_the_title() !!}</a>
+      <a href="{{ get_permalink() }}">{!! get_the_title() !!} {{ __(': Contendios ','thememexposito') }}</a>
       @endif
     </h2>
   </header>

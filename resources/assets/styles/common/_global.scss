@@ -105,22 +105,18 @@ h6 {
 }
 
 .content_preload {
-  width: 90%;
+  width: 80%;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 2.5rem;
-  line-height: 0.8;
+  font-size: 2rem;
+  line-height: 1.3;
   word-wrap: break-word;
   font-family: "Everett", Helvetica, Arial, sans-serif;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-
-  @include media-breakpoint-up(lg) {
-    font-size: 3.5rem;
-  }
 }
 
 .blur {

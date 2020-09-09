@@ -562,8 +562,12 @@ body.single {
       bottom: 34px;
       left: 30px;
 
-      @include media-breakpoint-up(xl) {
+      @media (min-width: 1300px) {
         bottom: 27px;
+      }
+
+      @media (min-width: 1440px) {
+        bottom: 34px;
       }
     }
   }
