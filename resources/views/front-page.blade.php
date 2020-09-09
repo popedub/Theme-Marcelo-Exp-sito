@@ -29,7 +29,7 @@
     {{-- estas directivas están en el setup.php --}}
     <div class="agenda">
       <div class="d-block d-lg-d-none pt-3 mb-4 pt-lg-0">
-        {{ __('Agenda','thememexposito') }}
+        {{ __('Agenda y noticias','thememexposito') }}
       </div>
       @query($args)
       <div class="item-agenda">
