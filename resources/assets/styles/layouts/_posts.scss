@@ -562,12 +562,8 @@ body.single {
       bottom: 34px;
       left: 30px;
 
-      @media (min-width: 1300px) {
+      @media (min-width: 1500px) {
         bottom: 27px;
-      }
-
-      @media (min-width: 1440px) {
-        bottom: 34px;
       }
     }
   }

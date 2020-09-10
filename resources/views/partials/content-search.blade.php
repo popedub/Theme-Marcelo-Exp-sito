@@ -16,9 +16,7 @@
   </header>
   <div class="entry-summary">
     @if (get_post_type() == 'agenda')
-    @if ($evento)
-    {!! $evento !!}
-    @endif
+
 
     @if ($descripcion)
     {!! $descripcion !!}
