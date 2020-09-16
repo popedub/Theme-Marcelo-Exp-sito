@@ -28,7 +28,7 @@
     @endphp
     {{-- estas directivas están en el setup.php --}}
     <div class="agenda">
-      <div class="d-block d-lg-d-none pt-3 mb-4 pt-lg-0">
+      <div class="d-block d-lg-d-none pt-3 mb-4 pt-lg-0 ti-agenda">
         {{ __('Agenda y noticias','thememexposito') }}
       </div>
       @query($args)

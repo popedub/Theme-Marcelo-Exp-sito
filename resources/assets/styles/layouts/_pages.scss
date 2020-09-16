@@ -267,16 +267,18 @@ body.home {
     position: relative;
     margin-top: 75vh;
     padding-top: 0px;
+    margin-right: -15px;
+    margin-left: -15px;
 
     @include media-breakpoint-up(lg) {
-      padding-top: 15px;
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-top: 0;
       border-left: 1px solid black;
       overflow: scroll;
       height: 100%;
       position: fixed;
       margin-top: 0;
+      margin-right: 0;
+      margin-left: 0;
     }
 
     @media (min-width: 1500px) {
@@ -284,12 +286,19 @@ body.home {
     }
   }
 
+  .ti-agenda {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   .item-agenda {
     font-size: 1rem;
     padding-bottom: 50px;
+    border-bottom: 1px solid black;
+    padding: 34px 15px 40px 15px;
 
     @include media-breakpoint-up(lg) {
-      font-size: 0.8rem;
+      font-size: 1rem;
       line-height: 1.5;
     }
 
