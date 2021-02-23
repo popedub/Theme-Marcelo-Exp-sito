@@ -1,6 +1,6 @@
-<a href="{{ get_permalink() }}" class="article">
-  <article @php (post_class()) @endphp>
 
+  <article @php (post_class()) @endphp>
+<a href="{{ get_permalink() }}" class="article">
     <header>
       <h2 class="entry-title">
         {!! get_the_title() !!}<br>
@@ -35,6 +35,7 @@
     </div>
 
     @endif
+    </a>
   </article>
-</a>
+
 

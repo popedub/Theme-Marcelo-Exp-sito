@@ -215,7 +215,7 @@ export default {
 
 
         } else if ($titular === $old_titular) {
-          console.log('mismo texto')
+          // console.log('mismo texto')
           $('.titular h2').toggleClass('invisible');
 
           $('.descripcion').each(function () {

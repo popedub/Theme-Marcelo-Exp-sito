@@ -126,7 +126,7 @@
       @if ($galeria)
       <div class="galeria-single">
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h2>@php echo __('IMÁGENES', 'thememexposito') @endphp</h2>
+          <h2>@php echo __('FOTO', 'thememexposito') @endphp</h2>
 
         </div>
 
@@ -175,7 +175,7 @@
         ?>
       ">
         @php
-        echo __('Imágenes', 'thememexposito')
+        echo __('Foto', 'thememexposito')
         @endphp</button>
       @endif
 

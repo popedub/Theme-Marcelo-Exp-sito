@@ -55,7 +55,7 @@
     <button type="button" id="closeMenu" class="overlay-close font-3">@php echo __('CERRAR',
       'thememexposito')@endphp</button>
 
-    <div class="languages">
+    <div class="languages d-none">
       @php
       do_action('wpml_add_language_selector');
       @endphp
