@@ -17,7 +17,7 @@
       </main>
       @if (App\display_sidebar())
       <aside class="sidebar d-none d-lg-block">
-        <div class="filtro">
+        <div id="filtros" class="filtro">
           @include('partials.filtro')
         </div>
       </aside>

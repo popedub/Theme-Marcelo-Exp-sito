@@ -1,7 +1,5 @@
 // import external dependencies
 import 'jquery';
-import 'isotope-layout/dist/isotope.pkgd';
-import 'imagesloaded/imagesloaded.pkgd';
 import 'bootstrap/js/src/util';
 import 'bigtext/dist/bigtext';
 import 'slick-carousel/slick/slick';

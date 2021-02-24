@@ -7,9 +7,23 @@ export default {
       $('h1').bigtext();
     })
 
+    $.fn.randomize = function (selector) {
+      var $elems = selector ? $(this).find(selector) : $(this).children(),
+        $parents = $elems.parent();
 
+      $parents.each(function () {
+        $(this).children(selector).sort(function (childA, childB) {
+          // * Prevent last slide from being reordered
+          if ($(childB).index() !== $(this).children(selector).length - 1) {
+            return Math.round(Math.random()) - 0.5;
+          }
+        }.bind(this)).detach().appendTo(this);
+      });
+
+      return this;
+    };
     $(document).ready(function () {
-      $('.galeria').slick({
+      $('.galeria').randomize().slick({
         autoplay: true,
         arrows: false,
         fade: true,

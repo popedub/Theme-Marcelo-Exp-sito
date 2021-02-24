@@ -1,24 +1,43 @@
 var accents = require('remove-accents');
-import 'isotope-layout/dist/isotope.pkgd';
-import 'imagesloaded/imagesloaded.pkgd';
-import Cookies from 'js-cookie/src/js.cookie';
+var Isotope = require('isotope-layout/dist/isotope.pkgd')
+var imagesLoaded = require('imagesloaded/imagesloaded.pkgd')
+import Cookies from 'js-cookie/src/js.cookie'
 
 export default {
   init() {
     // JavaScript to be fired on the home page
+    $(document).on('ready', function () {
+      $('.btn-link').each(function () {
+        if ($(this).data('filter') === Cookies.get('itemFiltro')) {
+          $(this).addClass('active')
+        }
 
+      })
+      if (Cookies.get('itemTitular') != null) {
+        var clase = Cookies.get('itemTitular')
+        clase = accents.remove(clase).toLowerCase();
+        $('.titular h2').remove();
+        $('.titular').append('<h2>' + Cookies.get('itemTitular') + '</h2>');
+        $('.descripcion').addClass('d-none');
+        $('.descripcion-contenidos').addClass('d-none');
+        $('.descripcion' + '.' + clase).toggleClass('d-none');
+      }
+
+
+    })
 
   },
   finalize() {
     // JavaScript to be fired on the home page, after the init JS
+
     // init Isotope
-
-
-      var $grid = $('.grid').isotope({
+    $(window).load(function () {
+      var grid = document.querySelector('.grid');
+      var iso = new Isotope(grid, {
         itemSelector: 'article',
         percentPosition: true,
         layoutMode: 'fitRows',
-        //initLayout: false,
+        initLayout: false,
         transitionDuration: '0.2s',
         fitRows: {
           // use element for option
@@ -32,39 +51,17 @@ export default {
           opacity: 1,
         },
       });
-
       // layout Isotope after each image loads
-      $grid.imagesLoaded().progress(function () {
-
-        $grid.isotope('layout');
-
+      imagesLoaded(grid, function () {
+        iso.layout();
 
         //filter si venimos de la página de single
-
         if (Cookies.get('itemFiltro') != null) {
-          console.log('condicional de cookie')
-          var filters = {};
-          //var string = Cookies.get('itemFiltro')
-          $('.btn-link').each(function () {
-            if ($(this).data('filter') === Cookies.get('itemFiltro')) {
-              var $this = $(this);
-
-              var filterValue;
-
-              var $buttonGroup = $this.parents('.filter-button-group');
-              var filterGroup = $buttonGroup.attr('data-filter-group');
-              // set filter for group
-              filters[filterGroup] = $this.attr('data-filter');
-
-              filterValue = concatValues(filters);
-              console.log('antes de llamar al filtro con estos datos' + $this.attr('data-filter'))
-              $grid.isotope({ filter: filterValue });
-            }
-
-          })
-
-          //$grid.isotope({ filter: filtroGalleta });
-
+          iso.arrange({
+            filter: Cookies.get('itemFiltro'),
+          });
+          Cookies.remove('itemFiltro')
+          Cookies.remove('itemTitular')
         }
 
       });
@@ -164,33 +161,71 @@ export default {
       // store filter for each group
       var filters = {};
       // filter items on button click
-      $('.filter-button-group').on('click', 'a', function () {
-        // get group key
-        var $this = $(this);
+      // document.querySelector('#filtros').addEventListener('click', function (event) {
 
-        var filterValue;
+      //   // get group key
 
-        var $buttonGroup = $this.parents('.filter-button-group');
-        var filterGroup = $buttonGroup.attr('data-filter-group');
-        // set filter for group
-        filters[filterGroup] = $this.attr('data-filter');
+      //   //var $this = event.target;
 
+      //   var filterValue;
+      //   var buttonGroup = event.target.parentNode;
+      //   //var $buttonGroup = $this.parents('.filter-button-group');
+      //   //var filterGroup = $buttonGroup.attr('data-filter-group');
+      //   var filterGroup = buttonGroup.getAttribute('data-filter-group');
 
-        if ($this.is('.active')) {
-          filters[filterGroup] = '';
-          $this.removeClass('active')
+      //   // set filter for group
+      //   //filters[filterGroup] = $this.attr('data-filter');
 
-        } else {
-          $this.toggleClass('active').siblings().removeClass('active');
-        }
+      //   filters[filterGroup] = event.target.getAttribute('data-filter');
 
 
 
-        // combine filters
-        filterValue = concatValues(filters);
-        $grid.isotope({ filter: filterValue });
+      //   // combine filters
+      //   filterValue = concatValues(filters);
+      //   iso.arrange({ filter: filterValue });
 
-      });
+
+
+      // });
+      //  change is-checked class on buttons
+      var buttonGroups = document.querySelectorAll('.btn-link');
+      for (var i = 0; i < buttonGroups.length; i++) {
+        var btnGroup = buttonGroups[i];
+        radioButtonGroup(btnGroup);
+      }
+
+      function radioButtonGroup(btnGroup) {
+        btnGroup.addEventListener('click', function (event) {
+          var filterValue;
+          var buttonGroup = event.target.parentNode;
+          var filterGroup = buttonGroup.getAttribute('data-filter-group');
+          filters[filterGroup] = event.target.getAttribute('data-filter');
+
+
+          if (btnGroup.classList.contains('active')) {
+            event.target.classList.remove('active');
+
+            filters[filterGroup] = '';
+          } else {
+
+           document.querySelectorAll('a.btn-link').forEach(
+              i => i.classList.remove('active')
+            )
+
+
+
+
+            event.target.classList.add('active');
+            console.log(filters)
+          }
+          // combine filters
+          filterValue = concatValues(filters);
+          iso.arrange({ filter: filterValue });
+
+
+        });
+      }
+
       // flatten object by concatting values
       function concatValues(obj) {
         var value = '';
@@ -199,6 +234,7 @@ export default {
         }
         return value;
       }
+
       //cambiamos el titular de la página de filtros
 
       $('.texto-titular').on('click', 'a', function () {
@@ -289,14 +325,14 @@ export default {
 
 
       //cuándo isotope ha renderizado los elementos, check el border-right
-      $grid.on('layoutComplete',
+      iso.on('layoutComplete',
         // eslint-disable-next-line no-unused-vars
         function (event) {
           var w = $(window).width()
           if (w > 768) {
 
 
-            var elems = $grid.isotope('getFilteredItemElements')
+            var elems = iso.getFilteredItemElements()
             //queda mirar los breakpoints
             var count = 1;
             $.each(elems, function () {
@@ -319,59 +355,40 @@ export default {
 
         }
       )
-      // $(window).resize(function () {
-      //   $grid.on('layoutComplete',
-      //     // eslint-disable-next-line no-unused-vars
-      //     function (event) {
-      //       var w = $(window).width()
-      //       if (w > 768) {
+      $(window).resize(function () {
+        iso.on('layoutComplete',
+          // eslint-disable-next-line no-unused-vars
+          function (event) {
+            var w = $(window).width()
+            if (w > 768) {
 
 
-      //         var elems = $grid.isotope('getFilteredItemElements')
-      //         //queda mirar los breakpoints
-      //         var count = 1;
-      //         $.each(elems, function () {
+              var elems = iso.getFilteredItemElements()
+              //queda mirar los breakpoints
+              var count = 1;
+              $.each(elems, function () {
 
 
-      //           if (count == 1 || count == 2) {
-      //             $(this).css('border-right', '1px solid black')
-      //           }
-      //           if (count === 3) {
-      //             $(this).css('border-right', 'none')
-      //             count = 0;
-      //           }
-      //           count++;
-      //         })
-      //         //llamo a la funcion para remover el border-bottom de los últimos items
+                if (count == 1 || count == 2) {
+                  $(this).css('border-right', '1px solid black')
+                }
+                if (count === 3) {
+                  $(this).css('border-right', 'none')
+                  count = 0;
+                }
+                count++;
+              })
+              //llamo a la funcion para remover el border-bottom de los últimos items
 
-      //         borderItems(elems)
+              borderItems(elems)
 
-      //       }
+            }
 
-      //     }
-      //   )
-      // })
-      $('.btn-link').each(function () {
-        if ($(this).data('filter') === Cookies.get('itemFiltro')) {
-          $(this).addClass('active')
-
-        }
-
+          }
+        )
       })
-      if (Cookies.get('itemTitular') != null) {
-        var clase = Cookies.get('itemTitular')
-        clase = accents.remove(clase).toLowerCase();
-        $('.titular h2').remove();
-        $('.titular').append('<h2>' + Cookies.get('itemTitular') + '</h2>');
-        $('.descripcion').addClass('d-none');
-        $('.descripcion-contenidos').addClass('d-none');
-        $('.descripcion' + '.' + clase).toggleClass('d-none');
-      }
-      console.log('antes de remover las cookies')
-      Cookies.remove('itemFiltro')
-      Cookies.remove('itemTitular')
 
-
+    })
 
   },
 };

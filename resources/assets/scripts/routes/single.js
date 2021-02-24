@@ -1,4 +1,5 @@
 
+import Cookies from 'js-cookie/src/js.cookie';
 export default {
   init() {
     // JavaScript to be fired on the about us page
@@ -7,8 +8,12 @@ export default {
       $('.link-filtro').click(function () {
         var getFiltro = '.category-' + $(this).data('filter');
         var titular = $(this).text();
-        localStorage.setItem('itemFiltro', getFiltro);
-        localStorage.setItem('itemTitular', titular);
+        Cookies.remove('itemFiltro', { sameSite: 'strict' })
+        Cookies.remove('itemTitular', { sameSite: 'strict' })
+        Cookies.set('itemFiltro', getFiltro, { sameSite: 'strict' })
+        Cookies.set('itemTitular', titular, { sameSite: 'strict' })
+        // localStorage.setItem('itemFiltro', getFiltro);
+        // localStorage.setItem('itemTitular', titular);
 
       })
 
@@ -137,21 +142,26 @@ export default {
 
   },
   finalize() {
-    var altura = function () {
-      var altura = $('article header').outerHeight() + $('header.banner').outerHeight();
-      $('.entry-content').css('margin-top', altura);
-      $('.content-sidebar').css('margin-top', altura);
-    }
-    var w = $(window).width();
-    if (w > 768) {
-      $(window).load(function () {
-        altura();
-      })
 
-      $(window).resize(function () {
-        altura();
-      })
-    }
+      var altura = function () {
+        var altura = $('article header').outerHeight() + $('header.banner').outerHeight();
+        $('.entry-content').css('margin-top', altura);
+        $('.content-sidebar').css('margin-top', altura);
+
+      }
+      var w = $(window).width();
+      if (w > 768) {
+
+          altura();
+
+
+        $(window).on('resize', function () {
+          altura();
+        })
+      }
+
+
+
 
 
   },
