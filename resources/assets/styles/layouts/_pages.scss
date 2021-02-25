@@ -86,7 +86,8 @@
       line-height: 1.4;
     }
 
-    a {//stylelint-disable
+    //stylelint-disable
+    a {
       border-bottom: 2px solid black;
       transition: border-bottom 0.3s ease-in-out;
       text-decoration: none;
@@ -244,13 +245,33 @@ body.home {
 
   .quote {
     position: absolute;
-    bottom: 0;
-    left: 15px;
-    width: 48%;
-    display: none;
+    top: 0;
+    left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    height: 75vh;
+    flex-direction: column;
+    justify-content: end;
+    color: white;
+    background-color: rgba($color: #000000, $alpha: 0.3);
 
     @include media-breakpoint-up(lg) {
+      position: absolute;
+      left: 15px;
+      bottom: 0;
+      top: auto;
+      padding-left: 0;
+      padding-right: 0;
       display: block;
+      width: 48%;
+      height: auto;
+      color: black;
+      background-color: transparent;
     }
 
     p {
@@ -433,7 +454,7 @@ html[lang="es"] {
   }
 
   .lg-toolbar .lg-download::after {
-    content:"";
+    content: "";
     display: inline-block;
     margin-left: 15px;
   }

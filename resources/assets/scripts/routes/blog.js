@@ -42,7 +42,7 @@ export default {
         //filter si venimos de la página de single
 
         if (Cookies.get('itemFiltro') != null) {
-          console.log('condicional de cookie')
+
           var filters = {};
           //var string = Cookies.get('itemFiltro')
           $('.btn-link').each(function () {
@@ -57,7 +57,7 @@ export default {
               filters[filterGroup] = $this.attr('data-filter');
 
               filterValue = concatValues(filters);
-              console.log('antes de llamar al filtro con estos datos' + $this.attr('data-filter'))
+
               $grid.isotope({ filter: filterValue });
             }
 
@@ -229,7 +229,7 @@ export default {
 
 
         } else if ($titular === $old_titular) {
-          // console.log('mismo texto')
+
           $('.titular h2').toggleClass('invisible');
 
           $('.descripcion').each(function () {
@@ -367,10 +367,24 @@ export default {
         $('.descripcion-contenidos').addClass('d-none');
         $('.descripcion' + '.' + clase).toggleClass('d-none');
       }
-      console.log('antes de remover las cookies')
+
       Cookies.remove('itemFiltro')
       Cookies.remove('itemTitular')
+    $(window).on('scroll', function () {
 
+      var y = $(this).scrollTop();
+      if (y > 300) {
+        $('.back-top').fadeIn();
+      } else {
+        $('.back-top').fadeOut();
+      }
+    });
+
+
+    $('.back-top').on('click', function () {
+      $('html,body').animate({ scrollTop: 0 }, 400);
+      return false;
+    });
 
 
   },

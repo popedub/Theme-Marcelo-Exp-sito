@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+@svg('close-left','back-top')
 <div class="col-12 intro d-none d-lg-block">
   <div class="titular">
     <h2 class="invisible">START</h2>
@@ -35,12 +35,21 @@
     @endwhile
   </div>
   <div class="footer">
-    <div class="row">
-      <div class="col-12 m">
+
+    <div class="row pa">
+      <div class="col-12 col-lg-8 m">
         @php
         echo __('MARCELO EXPÓSITO', 'thememexposito') . '<br>';
         echo date('Y');
         @endphp
+      </div>
+      <div class="col-12 col-lg-4 mt-4 mb-2 mb-lg-0 mt-lg-0 pl-lg-0 d-lg-flex flex-lg-column  justify-content-end" style="font-size: 14px;">
+        <p class="mb-0">{{ __('Diseño y aquitectura: ', 'themmexposito') }}<a href="https://todojunto.net/"
+            target="_blank" class="">todojunto.net</a></p>
+        <p class="mb-0">{{ __('Desarrollo: ', 'themmexposito') }}<a href="http://pablo-volt.me/" target="_blank"
+            class="">Pablo Volt</a></p>
+        <p class="mb-0">{{ __('Edición de foto: ', 'themmexposito') }}<a href="#" target="_blank"
+            class="">Vero Iglesia</a></p>
       </div>
 
     </div>
@@ -52,3 +61,4 @@
 
 {!! get_the_posts_navigation() !!}
 @endsection
+

@@ -191,6 +191,15 @@ body.blog {
       }
     }
   }
+
+  .back-top {
+    z-index: 100;
+    left: calc(100% - 60px);
+
+    @include media-breakpoint-up(lg) {
+      left: calc(83.3333% - 60px);
+    }
+  }
 }
 
 .intro {
@@ -251,13 +260,12 @@ body.blog {
   line-height: 0.9;
 
   @include media-breakpoint-up(lg) {
-    position: absolute;
-    bottom: 15px;
     margin-top: 0;
+    font-size: 3rem;
   }
 
   @include media-breakpoint-up(xl) {
-    font-size: 3rem;
+    font-size: 3.7rem;
   }
 
   @media (min-width: 1500px) {
